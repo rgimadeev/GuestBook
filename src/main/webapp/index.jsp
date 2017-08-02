@@ -1,49 +1,43 @@
-<%@ page contentType="text/html;charset=utf-8" %>
-
-
-
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <%@ page import="java.util.*"%>
 <%@ page import="gbook.*"%>
+<%@ page contentType="text/html;charset=utf-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
 <title>Base</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-
 <style type="text/css">
-body,table,hr {
+body {
 	color: black;
 	background: silver;
+	font-family: Verdana, fantasy;
+	font-size:large;
+}
+table {
+color: black;
+	background: silver;
 	font-family: Verdana, sans-serif;
-	font-size: x-small;
+	font-size:medium;
 }
 </style>
 </head>
 <body>
-<center>
-<table border=1>
-	<tr>
-		<th>AutorName</th>
-		<th>TextMessage</th>
-		<th>PublicationDate</th>
-	</tr>
-<P><jsp:useBean id="userbase" scope="session"
-	class="gbook.BaseBean" />
+<h><p>Список сообщений:</p></h><br>
 
-<%
-      ArrayList message =userbase.getMessage();
-  	for (Iterator i = message.iterator(); i.hasNext();) {
-			Message mes = (Message) i.next();
-			%>
-            <td width="200"><%=mes.getAutorName()%></td>
-    	    <td width="200"><%=mes.getMessageDesc()%></td>
-            <td width="200"><%=mes.getPublicationDate()%></td>
-             </tr>
-	<%
-		}
-	%>
+<a href="new-message">Добавление нового сообщения</a>
+ <table>
+      <c:forEach var="mes" items="${messageList}">
+        <tr>
+          <td>Автор: ${mes.getAutorName()}&nbsp;&nbsp;</td>
+          <td>Текст сообщения: ${mes.getMessageDesc()}</td>
+          <td><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Дата публикации: ${mes.getPublicationDate()}</td>
+        </tr>
+      </c:forEach>
+    </table>
 </body>
 </html>
+
 
 
 

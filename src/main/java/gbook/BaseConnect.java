@@ -4,20 +4,23 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BaseContact {
-    public BaseContact() {
+public class BaseConnect {
+    Connection con;
+
+    public BaseConnect() {
     }
 
-    public List<Message> getMessages() {
+    public ArrayList<Message> getMessages() {
         Message mes = null;
-        List<Message> messages = new ArrayList<Message>();
+
+        ArrayList<Message> messages = new ArrayList<Message>();
         try {
 
             Class.forName("org.postgresql.Driver");
             String url = "jdbc:postgresql://localhost:5432/guest_book";
-            Connection con = DriverManager.getConnection(url, "postgres", "317935");
+            con = DriverManager.getConnection(url, "postgres", "317935");
             Statement statement = con.createStatement();
-            String requete1 = "SELECT autor_name, text_message, publication_date FROM message_table";
+            String requete1 = "SELECT autor_name, text_message, publication_date FROM message_table order by publication_date desc";
             ResultSet resultset = statement.executeQuery(requete1);
 
             while (resultset.next()) {
@@ -30,7 +33,6 @@ public class BaseContact {
                         + mes.getMessageDesc() + " " + mes.getPublicationDate());
 
             }
-            con.close();
         } catch (ClassNotFoundException e) {
             System.err.println("Erreur lors du chargement du pilote : " + e);
         } catch (SQLException sqle) {
@@ -38,5 +40,22 @@ public class BaseContact {
         }
         return messages;
     }
+
+    public void insertMessage(Message message) {
+        try {
+            PreparedStatement stmt = con.prepareStatement("INSERT INTO message_table "
+                    + "(autor_name, text_message, publication_date)"
+                    + "VALUES( ?,  ?,  ?)");
+            stmt.setString(1, message.getAutorName());
+            stmt.setString(2, message.getMessageDesc());
+            stmt.setDate(3, new Date(message.getPublicationDate().getTime()));
+            stmt.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
 }
+
 
