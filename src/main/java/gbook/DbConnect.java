@@ -1,13 +1,15 @@
 package gbook;
 
+import javax.servlet.http.HttpServletRequest;
 import java.sql.*;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BaseConnect {
+public class DbConnect {
     Connection con;
 
-    public BaseConnect() {
+    public DbConnect() {
     }
 
     public ArrayList<Message> getMessages() {
@@ -42,8 +44,9 @@ public class BaseConnect {
     }
 
     public void insertMessage(Message message) {
+
         try {
-            PreparedStatement stmt = con.prepareStatement("INSERT INTO message_table "
+            PreparedStatement stmt = con.prepareStatement("INSERT INTO message_table"
                     + "(autor_name, text_message, publication_date)"
                     + "VALUES( ?,  ?,  ?)");
             stmt.setString(1, message.getAutorName());
@@ -55,7 +58,10 @@ public class BaseConnect {
         }
 
     }
-
 }
-
+   /* public static void main(String[] args) {
+        DbConnect b=new DbConnect();
+        b.insertMessage();
+    }
+}*/
 

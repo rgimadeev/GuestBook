@@ -6,17 +6,18 @@ import java.text.DateFormat;
 import java.util.Date;
 
 public class Message {
-    private int Id;
+    private int messageId;
     private String autorName;
     private String messageDesc;
     private Date publicationDate;
 
+
     public int getId() {
-        return Id;
+        return messageId;
     }
 
-    public void setId(int id) {
-        Id = id;
+    public void setId(int messageId) {
+        this.messageId = messageId;
     }
 
     public String getAutorName() {

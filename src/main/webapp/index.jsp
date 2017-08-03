@@ -23,15 +23,17 @@ color: black;
 </style>
 </head>
 <body>
-<h><p>Список сообщений:</p></h><br>
+<h><p><a name="top">Список сообщений:</a></p></h><br>
 
-<a href="new-message">Добавление нового сообщения</a>
+<a  href="new-message">Добавление нового сообщения</a>
+
  <table>
       <c:forEach var="mes" items="${messageList}">
         <tr>
           <td>Автор: ${mes.getAutorName()}&nbsp;&nbsp;</td>
           <td>Текст сообщения: ${mes.getMessageDesc()}</td>
           <td><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Дата публикации: ${mes.getPublicationDate()}</td>
+          <td><br><br><br><br> <p><a href="#top">Наверх</a></p></td>
         </tr>
       </c:forEach>
     </table>
