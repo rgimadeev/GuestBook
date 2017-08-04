@@ -14,7 +14,14 @@ public class MainServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        DbConnect baseconnect = new DbConnect();
+        DbConnect baseconnect = null;
+        try {
+            baseconnect = new DbConnect();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         ArrayList<Message> list = baseconnect.getMessages();
         request.setAttribute("messageList", list);
         request.getRequestDispatcher("/index.jsp").forward(request, response);

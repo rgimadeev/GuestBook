@@ -7,9 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DbConnect {
-    Connection con;
+    Statement statement;
+    ResultSet resultset;
+    PreparedStatement stmt;
+    String url = "jdbc:postgresql://localhost:5432/guest_book";
+    Connection con = DriverManager.getConnection(url, "postgres", "317935");
 
-    public DbConnect() {
+    public DbConnect() throws ClassNotFoundException, SQLException {
+        Class.forName("org.postgresql.Driver");
     }
 
     public ArrayList<Message> getMessages() {
@@ -17,13 +22,9 @@ public class DbConnect {
 
         ArrayList<Message> messages = new ArrayList<Message>();
         try {
-
-            Class.forName("org.postgresql.Driver");
-            String url = "jdbc:postgresql://localhost:5432/guest_book";
-            con = DriverManager.getConnection(url, "postgres", "317935");
-            Statement statement = con.createStatement();
+            statement = con.createStatement();
             String requete1 = "SELECT autor_name, text_message, publication_date FROM message_table order by publication_date desc";
-            ResultSet resultset = statement.executeQuery(requete1);
+            resultset = statement.executeQuery(requete1);
 
             while (resultset.next()) {
                 mes = new Message();
@@ -35,8 +36,6 @@ public class DbConnect {
                         + mes.getMessageDesc() + " " + mes.getPublicationDate());
 
             }
-        } catch (ClassNotFoundException e) {
-            System.err.println("Erreur lors du chargement du pilote : " + e);
         } catch (SQLException sqle) {
             System.err.print("Erreur SQL : " + sqle);
         }
@@ -46,22 +45,24 @@ public class DbConnect {
     public void insertMessage(Message message) {
 
         try {
-            PreparedStatement stmt = con.prepareStatement("INSERT INTO message_table"
-                    + "(autor_name, text_message, publication_date)"
-                    + "VALUES( ?,  ?,  ?)");
+            stmt = con.prepareStatement("INSERT INTO message_table"
+                    + "(autor_name, text_message,publication_date)"
+                    + "VALUES( ?,  ?, ?)");
             stmt.setString(1, message.getAutorName());
             stmt.setString(2, message.getMessageDesc());
-            stmt.setDate(3, new Date(message.getPublicationDate().getTime()));
-            stmt.execute();
+            stmt.setTimestamp(3, getCurrentDate());
+            stmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
     }
-}
-   /* public static void main(String[] args) {
-        DbConnect b=new DbConnect();
-        b.insertMessage();
+
+    private static java.sql.Timestamp getCurrentDate() {
+
+        java.util.Date today = new java.util.Date();
+        return new java.sql.Timestamp(today.getTime());
+
     }
-}*/
+}
 

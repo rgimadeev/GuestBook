@@ -25,22 +25,20 @@ color: black;
 </head>
 <body>
 <h><p>Добавление нового сообщения:</p></h><br>
-<form action="<c:url value="/new-message"/>" method="POST">
+ <form action="new-message" method="POST">
             <table>
                 <tr>
                     <td>Автор:</td><td><input type="text" size="25" name="autorName" /></td>
                 </tr>
                 <tr>
                     <td>Текст сообщения:</td><td><textarea name="messageDesc" style="width: 500px" rows="10"></textarea></td>
-
                 </tr>
-            </table>
+              </table>
             <br>
             &nbsp;&nbsp;&nbsp;<a  href="messages">Переход к списку сообщений</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <input type="submit" value="Сохранить" name="Save">
                 <input type="reset" value="Очистить">
-
-
+    </form>
 </body>
 </html>
