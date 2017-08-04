@@ -7,7 +7,7 @@
 <html>
 <head>
 <title>Base</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"">
 <style type="text/css">
 body {
 	color: black;
@@ -21,6 +21,12 @@ color: black;
 	font-family: Verdana, sans-serif;
 	font-size:medium;
 }
+td.mes {
+color:red;
+align
+font-family: Verdana, sans-serif;
+font-size:small;
+}
 </style>
 </head>
 <body>
@@ -28,10 +34,10 @@ color: black;
  <form action="new-message" method="POST">
             <table>
                 <tr>
-                    <td>Автор:</td><td><input type="text" size="25" name="autorName" /></td>
+                    <td>Автор:</td><td><input type="text" size="25" name="autorName"  /></td><td class="mes"><c:out value="${requestScope.autormes}"/></td>
                 </tr>
                 <tr>
-                    <td>Текст сообщения:</td><td><textarea name="messageDesc" style="width: 500px" rows="10"></textarea></td>
+                    <td>Текст сообщения:</td><td><textarea name="messageDesc" style="width: 300px" rows="10"></textarea></td><td class="mes"><c:out value="${requestScope.textmes}"/></td>
                 </tr>
               </table>
             <br>
@@ -40,5 +46,6 @@ color: black;
                 <input type="submit" value="Сохранить" name="Save">
                 <input type="reset" value="Очистить">
     </form>
+
 </body>
 </html>

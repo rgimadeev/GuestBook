@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
+
 
 public class MainServlet extends HttpServlet {
 
@@ -24,7 +24,7 @@ public class MainServlet extends HttpServlet {
         }
         ArrayList<Message> list = baseconnect.getMessages();
         request.setAttribute("messageList", list);
-        request.getRequestDispatcher("/index.jsp").forward(request, response);
+        request.getRequestDispatcher("/ListMessage.jsp").forward(request, response);
         return;
     }
 

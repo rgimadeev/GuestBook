@@ -1,21 +1,29 @@
 package gbook;
 
-import javax.servlet.http.HttpServletRequest;
 import java.sql.*;
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.*;
+import javax.activation.DataSource;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+
+import static java.sql.DriverManager.getConnection;
+
 
 public class DbConnect {
+
+    String url = "jdbc:postgresql://localhost:5432/guest_book";
+    Connection con = getConnection(url, "postgres", "317935");
     Statement statement;
     ResultSet resultset;
     PreparedStatement stmt;
-    String url = "jdbc:postgresql://localhost:5432/guest_book";
-    Connection con = DriverManager.getConnection(url, "postgres", "317935");
-
     public DbConnect() throws ClassNotFoundException, SQLException {
         Class.forName("org.postgresql.Driver");
     }
+
+
 
     public ArrayList<Message> getMessages() {
         Message mes = null;
@@ -54,15 +62,21 @@ public class DbConnect {
             stmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
 
     }
 
-    private static java.sql.Timestamp getCurrentDate() {
+    private static java.sql.Timestamp getCurrentDate() throws ParseException {
 
         java.util.Date today = new java.util.Date();
-        return new java.sql.Timestamp(today.getTime());
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:MM:SS");
+        String str=sdf.format(today);//перевод текущей даты в строку
+        java.util.Date date=  sdf.parse(str);
+        return new java.sql.Timestamp(date.getTime());
 
     }
+
 }
 

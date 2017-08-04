@@ -6,7 +6,8 @@
 <html>
 <head>
 <title>Base</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"">
 <style type="text/css">
 body {
 	color: black;
@@ -23,16 +24,15 @@ color: black;
 </style>
 </head>
 <body>
-<h><p><a name="top">Список сообщений:</a></p></h><br>
-
-<a  href="new-message">Добавление нового сообщения</a>
-
+<h><a name="top">Список сообщений:</a></h><br>
+<p style="color:#00ff00"><c:out value="${requestScope.message}"/><br></p>
+<a href="new-message">Добавление нового сообщения</a>
  <table>
       <c:forEach var="mes" items="${messageList}">
         <tr>
           <td>Автор: ${mes.getAutorName()}&nbsp;&nbsp;</td>
           <td>Текст сообщения: ${mes.getMessageDesc()}</td>
-          <td><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Дата публикации: ${mes.getPublicationDate()}</td>
+          <td><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Дата публикации: ${mes.getPublicationDate()} </td>
           <td><br><br><br><br> <p><a href="#top">Наверх</a></p></td>
         </tr>
       </c:forEach>
