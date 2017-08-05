@@ -1,24 +1,12 @@
 package gbook;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.text.DateFormat;
-import java.util.Date;
+
+import java.sql.Timestamp;
 
 public class Message {
-    private int messageId;
     private String autorName;
     private String messageDesc;
-    private Date publicationDate;
-
-
-    public int getId() {
-        return messageId;
-    }
-
-    public void setId(int messageId) {
-        this.messageId = messageId;
-    }
+    private Timestamp publicationDate;
 
     public String getAutorName() {
         return autorName;
@@ -36,12 +24,12 @@ public class Message {
         this.messageDesc = messageDesc;
     }
 
-    public Date getPublicationDate() {
+    public Timestamp getPublicationDate() {
         return publicationDate;
     }
 
-    public void setPublicationDate(Date publication_date) {
-        this.publicationDate = publication_date;
+    public void setPublicationDate(Timestamp publicationDate) {
+        this.publicationDate = publicationDate;
     }
 
 }

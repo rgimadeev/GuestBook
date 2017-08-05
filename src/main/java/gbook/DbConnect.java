@@ -2,12 +2,8 @@ package gbook;
 
 import java.sql.*;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.*;
-import javax.activation.DataSource;
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
+
 
 import static java.sql.DriverManager.getConnection;
 
@@ -19,11 +15,10 @@ public class DbConnect {
     Statement statement;
     ResultSet resultset;
     PreparedStatement stmt;
+    public javax.sql.DataSource dataSource;
     public DbConnect() throws ClassNotFoundException, SQLException {
         Class.forName("org.postgresql.Driver");
     }
-
-
 
     public ArrayList<Message> getMessages() {
         Message mes = null;
@@ -38,14 +33,14 @@ public class DbConnect {
                 mes = new Message();
                 mes.setAutorName(resultset.getString("autor_name"));
                 mes.setMessageDesc(resultset.getString("text_message"));
-                mes.setPublicationDate(resultset.getDate("publication_date"));
+                mes.setPublicationDate(resultset.getTimestamp("publication_date"));
                 messages.add(mes);
                 System.out.println(mes.getAutorName() + " "
                         + mes.getMessageDesc() + " " + mes.getPublicationDate());
 
             }
-        } catch (SQLException sqle) {
-            System.err.print("Erreur SQL : " + sqle);
+        } catch (SQLException sql) {
+            System.err.print("Error SQL : " + sql);
         }
         return messages;
     }
@@ -58,7 +53,7 @@ public class DbConnect {
                     + "VALUES( ?,  ?, ?)");
             stmt.setString(1, message.getAutorName());
             stmt.setString(2, message.getMessageDesc());
-            stmt.setTimestamp(3, getCurrentDate());
+            stmt.setTimestamp(3,new java.sql.Timestamp (getCurrentDate().getTime()));
             stmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -67,16 +62,13 @@ public class DbConnect {
         }
 
     }
-
-    private static java.sql.Timestamp getCurrentDate() throws ParseException {
+    public  java.sql.Timestamp getCurrentDate() throws ParseException {
 
         java.util.Date today = new java.util.Date();
-        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:MM:SS");
-        String str=sdf.format(today);//перевод текущей даты в строку
-        java.util.Date date=  sdf.parse(str);
-        return new java.sql.Timestamp(date.getTime());
+        return new java.sql.Timestamp(today.getTime());
 
     }
-
 }
+
+
 

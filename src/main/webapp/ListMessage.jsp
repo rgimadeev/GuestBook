@@ -3,6 +3,7 @@
 <%@ page import="gbook.*"%>
 <%@ page contentType="text/html;charset=utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 <head>
 <title>Base</title>
@@ -32,7 +33,7 @@ color: black;
         <tr>
           <td>Автор: ${mes.getAutorName()}&nbsp;&nbsp;</td>
           <td>Текст сообщения: ${mes.getMessageDesc()}</td>
-          <td><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Дата публикации: ${mes.getPublicationDate()} </td>
+          <td><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Дата публикации:  <fmt:formatDate pattern="dd.MM.YYYY HH:mm" value="${mes.getPublicationDate()}" /> </td>
           <td><br><br><br><br> <p><a href="#top">Наверх</a></p></td>
         </tr>
       </c:forEach>
