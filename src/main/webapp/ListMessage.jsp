@@ -42,7 +42,12 @@ color: black;
 <body>
 <h><center><p style="color:#0000FF">ГОСТЕВАЯ КНИГА:</center></h></p>
 <h><a name="top">Список сообщений:</a></h><br>
-<p style="color:#00ff00"><c:out value="${requestScope.message}"/><br></p>
+<p><font size="5" color="#00ff00" face="Calligraph"><c:if test="${not empty message}">
+                         <div>
+                         <c:out value="${message}"/>
+                         </div>
+                        <c:set var="message" value="" scope="session"/>
+                        </c:if><br></font></p>
 <a href="new-message">Добавление нового сообщения</a><br>
 
       <c:forEach var="mes" items="${messageList}">

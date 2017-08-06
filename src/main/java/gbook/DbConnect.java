@@ -6,16 +6,13 @@ import javax.sql.DataSource;
 import java.sql.*;
 import java.text.ParseException;
 import java.util.*;
-import  javax.sql.DataSource;
+
 
 
 public class DbConnect {
 
-  //  String url = "jdbc:postgresql://localhost:5432/guest_book";
-  //  Connection con = getConnection(url, "postgres", "317935");
- //  private static Connection con;
-   // private static DbConnect instance;
- //   private static DataSource dataSource;
+ /*  String url = "jdbc:postgresql://localhost:5432/guest_book";   // без пула БД
+    Connection conn = getConnection(url, "postgres", "317935"); */
     Statement statement;
     ResultSet resultset;
     PreparedStatement stmt;
@@ -44,11 +41,9 @@ public class DbConnect {
             }
         } catch (SQLException sql) {
             System.err.print("Error SQL : " + sql);
-
         }
         conn.close();
         return messages;
-
 
     }
 

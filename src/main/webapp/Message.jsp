@@ -49,10 +49,29 @@ outline:none;
  <form action="new-message" method="POST">
             <table class="table">
                 <tr>
-                    <td>Автор:</td><td><input type="text" size="25" name="autorName" value="${autorNameTxt}"/></td><td class="mes"><c:out value="${requestScope.autorMes}"/></td>
+                    <td>Автор:</td><td><input type="text" size="25" name="autorName" value="${autorNameTxt}"/></td>
+                    <td class="mes"><c:if test="${not empty autorMes}">
+                                       <div>
+                                           <c:out value="${autorMes}"/>
+                                       </div>
+                                       <c:set var="autorMes" value="" scope="session"/>
+                                    </c:if>
+                    </td>
                 </tr>
                 <tr>
-                    <td>Текст сообщения:</td><td><textarea name="messageDesc" style="width: 450px" rows="10" placeholder="${messageTxt}"></textarea></td><td class="mes"><c:out value="${requestScope.textMes}"/><c:out value="${requestScope.maxMes}"/></td>
+                    <td>Текст сообщения:</td><td><textarea name="messageDesc" style="width: 450px" rows="10" placeholder="${messageTxt}"></textarea></td>
+                    <td class="mes"><c:if test="${not empty textMes}">
+                                     <div>
+                                     <c:out value="${textMes}"/>
+                                     </div>
+                    <c:set var="textMes" value="" scope="session"/>
+                   </c:if>
+                   <c:if test="${not empty maxMes}">
+                     <div>
+                      <c:out value="${maxMes}"/>
+                                      </div>
+                   <c:set var="maxMes" value="" scope="session"/>
+                   </c:if></td>
                 </tr>
               </table>
             <br>

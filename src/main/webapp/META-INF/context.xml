@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <Context>
+<Resource
+        driverClassName="org.postgresql.Driver"
+        maxActive="4" 
+        maxIdle="2" 
+        maxWait="5000" 
+        name="jdbc/GuestBookDS"
+        username="postgres"
+        password="317935"
+        type="javax.sql.DataSource" 
+        url="jdbc:postgresql://localhost:5432/guest_book">
+    </Resource>
+</Context>
+

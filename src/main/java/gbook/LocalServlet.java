@@ -7,16 +7,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
-/**
- * Created by rgimadeev on 03.08.2017.
- */
 public class LocalServlet extends HttpServlet{
 
         protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
             response.sendRedirect("/messages");
         }
     }
-
 
 
 
