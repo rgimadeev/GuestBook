@@ -1,23 +1,29 @@
 package gbook;
 
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
 import java.sql.*;
 import java.text.ParseException;
 import java.util.*;
-
-
-import static java.sql.DriverManager.getConnection;
+import  javax.sql.DataSource;
 
 
 public class DbConnect {
 
-    String url = "jdbc:postgresql://localhost:5432/guest_book";
-    Connection con = getConnection(url, "postgres", "317935");
+  //  String url = "jdbc:postgresql://localhost:5432/guest_book";
+  //  Connection con = getConnection(url, "postgres", "317935");
+   private static Connection con;
+    private static DbConnect instance;
+    private static DataSource dataSource;
     Statement statement;
     ResultSet resultset;
     PreparedStatement stmt;
-    public javax.sql.DataSource dataSource;
-    public DbConnect() throws ClassNotFoundException, SQLException {
-        Class.forName("org.postgresql.Driver");
+   ;
+    public DbConnect() throws ClassNotFoundException, SQLException, NamingException {
+        InitialContext ctx = new InitialContext();
+        DataSource ds = (DataSource) ctx.lookup("java:comp/env/jdbc/GuestBookDS");
+        Connection conn = ds.getConnection();
     }
 
     public ArrayList<Message> getMessages() {
@@ -45,7 +51,7 @@ public class DbConnect {
         return messages;
     }
 
-    public void insertMessage(Message message) {
+    public void insertMessage(Message message) throws SQLException {
 
         try {
             stmt = con.prepareStatement("INSERT INTO message_table"

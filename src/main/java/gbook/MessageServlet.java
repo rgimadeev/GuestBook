@@ -1,5 +1,6 @@
 package gbook;
 
+import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -7,12 +8,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.*;
 import java.text.ParseException;
-import gbook.DbPool;
 
 public class MessageServlet  extends HttpServlet {
 
         protected void processRequest (HttpServletRequest req, HttpServletResponse resp)
-        throws ServletException, IOException {
+                throws ServletException, IOException, NamingException {
             // Установка кодировки для принятия параметров
             req.setCharacterEncoding("UTF-8");
             // Если пользователь нажал кнопку ОК – тогда добавляем новое сообщение)
@@ -41,12 +41,17 @@ public class MessageServlet  extends HttpServlet {
 
         if (  req.getParameter("Save")!=null && req.getParameter("autorName")!="" && req.getParameter("messageDesc")!="") {
             if(req.getParameter("messageDesc").length()<7000) {
-            processRequest(req, resp);
-            resp.setContentType("text/html;charset=utf-8");
-            String add_message = "Сообщение было добавлено";
-            req.setAttribute("message", add_message);
-            MainServlet ms=new MainServlet();
-            ms.doGet(req,resp);
+                try {
+                    processRequest(req, resp);
+                    resp.setContentType("text/html;charset=utf-8");
+                    String add_message = "Сообщение было добавлено";
+                    req.setAttribute("message", add_message);
+                    MainServlet ms=new MainServlet();
+                    ms.doGet(req,resp);
+                } catch (NamingException e) {
+                    e.printStackTrace();
+                }
+
             }
             else {
                 String autorNameText=req.getParameter("autorName");
@@ -81,7 +86,7 @@ public class MessageServlet  extends HttpServlet {
         }
     }
 
-    private void insertMessage(HttpServletRequest req) throws SQLException, ParseException, IOException, ClassNotFoundException {
+    private void insertMessage(HttpServletRequest req) throws SQLException, ParseException, IOException, ClassNotFoundException, NamingException {
         DbConnect db = new DbConnect();
         Message s = prepareMessage(req);
         db.insertMessage(s);

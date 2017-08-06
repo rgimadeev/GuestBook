@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context path="/GuestBookApp">
     <Resource 
         driverClassName="org.postgresql.Driver"
         maxActive="4" 
@@ -9,7 +8,6 @@
         username="postgres"
         password="317935"
         type="javax.sql.DataSource" 
-        url="jdbc:postgresql://localhost:5432/guest_book"
-        validationQuery="SELECT 1">
+        url="jdbc:postgresql://localhost:5432/guest_book">
     </Resource>
-</Context>
+
