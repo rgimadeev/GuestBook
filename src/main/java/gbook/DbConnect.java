@@ -22,18 +22,16 @@ public class DbConnect {
     InitialContext ctx = new InitialContext();
     DataSource ds = (DataSource) ctx.lookup("java:comp/env/jdbc/GuestBookDS");
     Connection conn = ds.getConnection();
-    public DbConnect() throws ClassNotFoundException, SQLException, NamingException {
-    }
+   public DbConnect() throws ClassNotFoundException, SQLException, NamingException {
 
-    public ArrayList<Message> getMessages() {
+   }
+    public ArrayList<Message> getMessages() throws SQLException {
         Message mes = null;
-
         ArrayList<Message> messages = new ArrayList<Message>();
         try {
             statement = conn.createStatement();
             String sql = "SELECT autor_name, text_message, publication_date FROM message_table order by publication_date desc";
             resultset = statement.executeQuery(sql);
-
             while (resultset.next()) {
                 mes = new Message();
                 mes.setAutorName(resultset.getString("autor_name"));
@@ -46,8 +44,12 @@ public class DbConnect {
             }
         } catch (SQLException sql) {
             System.err.print("Error SQL : " + sql);
+
         }
+        conn.close();
         return messages;
+
+
     }
 
     public void insertMessage(Message message) throws SQLException {
@@ -65,6 +67,7 @@ public class DbConnect {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+        conn.close();
 
     }
     public  java.sql.Timestamp getCurrentDate() throws ParseException {

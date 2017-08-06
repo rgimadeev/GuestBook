@@ -25,9 +25,15 @@ public class MainServlet extends HttpServlet {
         } catch (NamingException e) {
             e.printStackTrace();
         }
-        ArrayList<Message> list = baseconnect.getMessages();
-        request.setAttribute("messageList", list);
-        request.getRequestDispatcher("/ListMessage.jsp").forward(request, response);
+        ArrayList<Message> list = null;
+        try {
+            list = baseconnect.getMessages();
+            request.setAttribute("messageList", list);
+            request.getRequestDispatcher("/ListMessage.jsp").forward(request, response);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
         return;
     }
 
