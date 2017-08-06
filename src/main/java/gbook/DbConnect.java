@@ -13,17 +13,16 @@ public class DbConnect {
 
   //  String url = "jdbc:postgresql://localhost:5432/guest_book";
   //  Connection con = getConnection(url, "postgres", "317935");
-   private static Connection con;
-    private static DbConnect instance;
-    private static DataSource dataSource;
+ //  private static Connection con;
+   // private static DbConnect instance;
+ //   private static DataSource dataSource;
     Statement statement;
     ResultSet resultset;
     PreparedStatement stmt;
-   ;
+    InitialContext ctx = new InitialContext();
+    DataSource ds = (DataSource) ctx.lookup("java:comp/env/jdbc/GuestBookDS");
+    Connection conn = ds.getConnection();
     public DbConnect() throws ClassNotFoundException, SQLException, NamingException {
-        InitialContext ctx = new InitialContext();
-        DataSource ds = (DataSource) ctx.lookup("java:comp/env/jdbc/GuestBookDS");
-        Connection conn = ds.getConnection();
     }
 
     public ArrayList<Message> getMessages() {
@@ -31,7 +30,7 @@ public class DbConnect {
 
         ArrayList<Message> messages = new ArrayList<Message>();
         try {
-            statement = con.createStatement();
+            statement = conn.createStatement();
             String sql = "SELECT autor_name, text_message, publication_date FROM message_table order by publication_date desc";
             resultset = statement.executeQuery(sql);
 
@@ -54,7 +53,7 @@ public class DbConnect {
     public void insertMessage(Message message) throws SQLException {
 
         try {
-            stmt = con.prepareStatement("INSERT INTO message_table"
+            stmt = conn.prepareStatement("INSERT INTO message_table"
                     + "(autor_name, text_message,publication_date)"
                     + "VALUES( ?,  ?, ?)");
             stmt.setString(1, message.getAutorName());
