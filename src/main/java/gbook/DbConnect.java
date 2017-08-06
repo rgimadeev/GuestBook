@@ -26,8 +26,8 @@ public class DbConnect {
         ArrayList<Message> messages = new ArrayList<Message>();
         try {
             statement = con.createStatement();
-            String requete1 = "SELECT autor_name, text_message, publication_date FROM message_table order by publication_date desc";
-            resultset = statement.executeQuery(requete1);
+            String sql = "SELECT autor_name, text_message, publication_date FROM message_table order by publication_date desc";
+            resultset = statement.executeQuery(sql);
 
             while (resultset.next()) {
                 mes = new Message();

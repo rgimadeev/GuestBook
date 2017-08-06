@@ -9,7 +9,6 @@ import java.sql.*;
 import java.text.ParseException;
 import gbook.DbPool;
 
-
 public class MessageServlet  extends HttpServlet {
 
         protected void processRequest (HttpServletRequest req, HttpServletResponse resp)
@@ -41,28 +40,43 @@ public class MessageServlet  extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
 
         if (  req.getParameter("Save")!=null && req.getParameter("autorName")!="" && req.getParameter("messageDesc")!="") {
-                processRequest(req, resp);
+            if(req.getParameter("messageDesc").length()<7000) {
+            processRequest(req, resp);
             resp.setContentType("text/html;charset=utf-8");
             String add_message = "Сообщение было добавлено";
             req.setAttribute("message", add_message);
             MainServlet ms=new MainServlet();
             ms.doGet(req,resp);
+            }
+            else {
+                String autorNameText=req.getParameter("autorName");
+                req.setAttribute("autorNameTxt",autorNameText);//чтоб текст оставался при нажатие на "сохранить"
+                String textMessage = req.getParameter("messageDesc");
+                req.setAttribute("messageTxt", textMessage);//чтоб текст оставался при нажатие на "сохранить"
+                String maxMessageLenght="Максимальное кол-во символов в тексте: 7000";
+                req.setAttribute("maxMes",maxMessageLenght);
+                req.getRequestDispatcher("/Message.jsp").forward(req, resp);
+            }
         }
          else if(req.getParameter("Save")!=null && req.getParameter("autorName")=="" && req.getParameter("messageDesc")!=""){
-                String autor_message = "Поле 'Автор' не должно быть пустым" ;
-                 req.setAttribute("autormes",autor_message);
-            req.getRequestDispatcher("/Message.jsp").forward(req, resp);
-            }
+                  String textMessage = req.getParameter("messageDesc");
+                  req.setAttribute("messageTxt", textMessage);//чтоб текст оставался при нажатие на "сохранить"
+                  String autor_message = "Поле 'Автор' не должно быть пустым";
+                  req.setAttribute("autorMes", autor_message);
+                  req.getRequestDispatcher("/Message.jsp").forward(req, resp);
+              }
           else if(req.getParameter("Save")!=null && req.getParameter("autorName")!="" && req.getParameter("messageDesc")=="") {
+            String autorNameText=req.getParameter("autorName");
+            req.setAttribute("autorNameTxt",autorNameText);//чтоб текст оставался при нажатие на "сохранить"
             String text_message = "Поле 'Текст сообщения' не должно быть пустым";
-            req.setAttribute("textmes",text_message);
+            req.setAttribute("textMes",text_message);
             req.getRequestDispatcher("/Message.jsp").forward(req, resp);
         }
-          else if(req.getParameter("Save")!=null && req.getParameter("autorName")=="" && req.getParameter("messageDesc")=="") {
+          else {
             String text_message = "Поле 'Текст сообщения' не должно быть пустым";
             String autor_message = "Поле 'Автор' не должно быть пустым" ;
-            req.setAttribute("textmes",text_message);
-            req.setAttribute("autormes",autor_message);
+            req.setAttribute("textMes",text_message);
+            req.setAttribute("autorMes",autor_message);
             req.getRequestDispatcher("/Message.jsp").forward(req, resp);
         }
     }

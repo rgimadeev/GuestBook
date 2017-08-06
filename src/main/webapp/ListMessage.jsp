@@ -11,33 +11,55 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"">
 <style type="text/css">
 body {
-	color: black;
-	background: silver;
-	font-family: Verdana, fantasy;
-	font-size:large;
+	color:black ;
+	background: silver url(images/bg.jpg);
+	font-family: Calligraph, Regular;
+	font-size:x-large;
 }
-table {
+.autor {
 color: black;
-	background: silver;
-	font-family: Verdana, sans-serif;
-	font-size:medium;
+	background: silver url(images/bg.jpg);
+	font-family:Calligraph, sans-serif;
+	font-size:x-medium;
+
+}
+.pub_date {
+color: black;
+	background: silver url(images/bg.jpg);
+	font-family:Calligraph, sans-serif;
+	font-size:x-medium;
+	text-align: right;
+}
+.message_text{
+color: black;
+	background: silver (images/bg.jpg);;
+	font-family: Cambria, sans-serif;
+	font-size:x-medium;
+	text-align: left;
 }
 </style>
 </head>
 <body>
+<h><center><p style="color:#0000FF">ГОСТЕВАЯ КНИГА:</center></h></p>
 <h><a name="top">Список сообщений:</a></h><br>
 <p style="color:#00ff00"><c:out value="${requestScope.message}"/><br></p>
-<a href="new-message">Добавление нового сообщения</a>
- <table>
+<a href="new-message">Добавление нового сообщения</a><br>
+
       <c:forEach var="mes" items="${messageList}">
-        <tr>
-          <td>Автор: ${mes.getAutorName()}&nbsp;&nbsp;</td>
-          <td>Текст сообщения: ${mes.getMessageDesc()}</td>
-          <td><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Дата публикации:  <fmt:formatDate pattern="dd.MM.YYYY HH:mm" value="${mes.getPublicationDate()}" /> </td>
-          <td><br><br><br><br> <p><a href="#top">Наверх</a></p></td>
-        </tr>
+      <p class="autor">
+          <td>Автор: ${mes.getAutorName()}</td><br>
+      </p>
+      <p class="message_text"
+          <td>${mes.getMessageDesc()}</td>
+      </p>
+      <p class="pub_date">
+          <td>Дата публикации:  <fmt:formatDate pattern="dd.MM.YYYY HH:mm" value="${mes.getPublicationDate()}" /></td><br>
+          <td><a href="#top">Наверх</a></td><br>
+          <td>-------------------------------------------------------------------------------------------------------------------------------------</td>
+        </p><br>
+
       </c:forEach>
-    </table>
+
 </body>
 </html>
 
