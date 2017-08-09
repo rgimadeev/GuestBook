@@ -27,10 +27,11 @@ public class MainServlet extends HttpServlet {
         }
         ArrayList<Message> list = null;
         try {
+
             list = baseconnect.getMessages();
-            request.getSession().setAttribute("messageList", list);
-            response.sendRedirect("/ListMessage.jsp");
-          //  request.getRequestDispatcher("/ListMessage.jsp").forward(request, response);
+            request.setAttribute("messageList", list);
+
+            request.getRequestDispatcher("/ListMessage.jsp").forward(request, response);
         } catch (SQLException e) {
             e.printStackTrace();
 
