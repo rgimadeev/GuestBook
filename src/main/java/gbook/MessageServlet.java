@@ -60,61 +60,25 @@ public class MessageServlet  extends HttpServlet {
         else if (reqAut == "" && reqMesc != "")
         {
 
-             s = "{\"success\": false, \"errors\":{\"autorErr\": \"Поле Автор должно быть заполнено\",\"TextErr\": \"\"}}";
+             s = "{\"success\": false, \"errors\":{\"autorErr\": \"Поле 'Автор' должно быть заполнено\",\"TextErr\": \"\"}}";
 
         }
              else if  (reqAut != "" && reqMesc == "") {
-            s = "{\"success\": false, \"errors\":{\"autorErr\": \"\",\"TextErr\": \"Поле Текст сообщения должно быть заполнено\"}}";
+            s = "{\"success\": false, \"errors\":{\"autorErr\": \"\",\"TextErr\": \"Поле 'Текст сообщения' должно быть заполнено\"}}";
 
         }
         else if(reqAut != "" && reqMesc != "" && req.getParameter("messageDesc").length() > 4000 ) {
             s = "{\"success\": false, \"errors\":{\"autorErr\": \"\",\"TextErr\": \"Максимальный размер поля 4000 символов\"}}";
            }
             else {
-            s = "{\"success\": false, \"errors\":{\"autorErr\": \"Поле Автор должно быть заполнено\",\"TextErr\": \"Поле Текст сообщения должно быть заполнено\"}}";
+            s = "{\"success\": false, \"errors\":{\"autorErr\": \"Поле 'Автор' должно быть заполнено\",\"TextErr\": \"Поле 'Текст сообщения' должно быть заполнено\"}}";
 
         }
         out.println(s);
-       // out.flush();
+        out.flush();
         out.close();
 
-               /* } else {
-                   // String autorNameText = req.getParameter("autorName");
-                 //   req.setAttribute("autorNameTxt", autorNameText);//чтоб текст оставался при нажатие на "сохранить"
-                 //   String textMessage = req.getParameter("messageDesc");
-               ///     req.setAttribute("messageTxt", textMessage);//чтоб текст оставался при нажатие на "сохранить"
-               //     String maxMessageLenght = "Максимальное кол-во символов в тексте: 4000";
-                //    req.setAttribute("maxMes", maxMessageLenght);
-                    resp.sendRedirect("/new-message");
-                }
-            } else if (req.getParameter("Save") != null && req.getParameter("autorName") == "" && req.getParameter("messageDesc") != "") {
-              //  String textMessage = req.getParameter("messageDesc");
-              //  req.getSession().setAttribute("messageTxt", textMessage);//чтоб текст оставался при нажатие на "сохранить"
-             //   String autor_message = "Поле 'Автор' не должно быть пустым";
-             //   req.getSession().setAttribute("autorMes", autor_message);
-                resp.sendRedirect("/new-message");
-
-
-            } else if (req.getParameter("Save") != null && req.getParameter("autorName") != "" && req.getParameter("messageDesc") == "") {
-            //    String autorNameText = req.getParameter("autorName");
-            //    req.getSession().setAttribute("autorNameTxt", autorNameText);//чтоб текст оставался при нажатие на "сохранить"
-           //     String text_message = "Поле 'Текст сообщения' не должно быть пустым";
-           //     req.getSession().setAttribute("textMes", text_message);
-                resp.sendRedirect("/new-message");
-
-            } else {
-              //  String text_message = "Поле 'Текст сообщения' не должно быть пустым";
-              //  String autor_message = "Поле 'Автор' не должно быть пустым";
-              //  req.getSession().setAttribute("textMes", text_message);
-              //  req.getSession().setAttribute("autorMes", autor_message);
-                resp.sendRedirect("/new-message");
-
-            }*/
-
-
     }
-
-
 
     private void insertMessage(HttpServletRequest req) throws SQLException, ParseException, IOException, ClassNotFoundException, NamingException {
         DbConnect db = new DbConnect();

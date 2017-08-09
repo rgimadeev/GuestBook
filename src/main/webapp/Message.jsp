@@ -44,7 +44,7 @@ cursor:pointer;
 .superbutton:hover{
 background:#358DE5;
 }
-. superbutton:focus{
+.superbutton:focus{
 outline:none;
 }
 </style>
@@ -69,6 +69,7 @@ outline:none;
             <br>
             &nbsp;&nbsp;&nbsp;<a  href="messages">Переход к списку сообщений</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <input class="superbutton" id="submitButton" type="submit" value="Сохранить" >
+                 <input class="superbutton" id="submitButton" type="reset" value="Очистить" >
     </form>
 </body>
 </html>
