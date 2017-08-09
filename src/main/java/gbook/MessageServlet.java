@@ -43,7 +43,7 @@ public class MessageServlet  extends HttpServlet {
         String s=null;
         String reqAut=req.getParameter("autorName");
         String reqMesc=req.getParameter("messageDesc");
-        if (reqAut != "" && reqMesc != "" && req.getParameter("messageDesc").length() <= 4000) {
+        if (reqAut != "" && reqMesc != "" && reqMesc.length() <= 4000 && reqAut.length() <= 35) {
             try {
                 s = "{\"success\": true}";
                 processRequest(req, resp);
@@ -67,9 +67,12 @@ public class MessageServlet  extends HttpServlet {
             s = "{\"success\": false, \"errors\":{\"autorErr\": \"\",\"TextErr\": \"Поле 'Текст сообщения' должно быть заполнено\"}}";
 
         }
-        else if(reqAut != "" && reqMesc != "" && req.getParameter("messageDesc").length() > 4000 ) {
+        else if(reqAut != "" && reqMesc != "" && reqMesc.length() > 4000 ) {
             s = "{\"success\": false, \"errors\":{\"autorErr\": \"\",\"TextErr\": \"Максимальный размер поля 4000 символов\"}}";
            }
+        else if (reqAut != "" && reqMesc != "" && reqAut.length() > 35 ){
+            s = "{\"success\": false, \"errors\":{\"autorErr\": \"Максимальный размер поля 25 символов\",\"TextErr\": \"\"}}";
+        }
             else {
             s = "{\"success\": false, \"errors\":{\"autorErr\": \"Поле 'Автор' должно быть заполнено\",\"TextErr\": \"Поле 'Текст сообщения' должно быть заполнено\"}}";
 
