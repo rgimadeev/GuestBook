@@ -6,7 +6,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 <head>
-<title>Base</title>
+<title>Гостевая книга</title>
 <meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"">
 <style type="text/css">
@@ -42,12 +42,9 @@ color: black;
 <body>
 <h><center><p style="color:#0000FF">ГОСТЕВАЯ КНИГА:</center></h></p>
 <h><a name="top">Список сообщений:</a></h><br>
-<p><font size="5" color="#00ff00" face="Calligraph"><c:if test="${not empty message}">
-                         <div>
-                         <c:out value="${message}"/>
-                         </div>
-                        <c:set var="message" value="" scope="session"/>
-                        </c:if><br></font></p>
+<p><font size="5" color="#00ff00" face="Calligraph">${message}<br></font></p>
+
+
 <a href="new-message">Добавление нового сообщения</a><br>
 
       <c:forEach var="mes" items="${messageList}">
@@ -60,7 +57,7 @@ color: black;
       <p class="pub_date">
           <td>Дата публикации:  <fmt:formatDate pattern="dd.MM.YYYY HH:mm" value="${mes.getPublicationDate()}" /></td><br>
           <td><a href="#top">Наверх</a></td><br>
-          <td>-------------------------------------------------------------------------------------------------------------------------------------</td>
+          <td>--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</td>
         </p><br>
 
       </c:forEach>

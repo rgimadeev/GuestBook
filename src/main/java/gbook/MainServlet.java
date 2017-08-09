@@ -29,8 +29,8 @@ public class MainServlet extends HttpServlet {
         try {
             list = baseconnect.getMessages();
             request.getSession().setAttribute("messageList", list);
-            response.sendRedirect("/ListMessage.jsp");
-          //  request.getRequestDispatcher("/ListMessage.jsp").forward(request, response);
+            //response.sendRedirect("/ListMessage.jsp");//реализация через сессию
+            request.getRequestDispatcher("/ListMessage.jsp").forward(request, response);
         } catch (SQLException e) {
             e.printStackTrace();
 

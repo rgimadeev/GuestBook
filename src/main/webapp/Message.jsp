@@ -6,7 +6,7 @@
 <%@ page import="gbook.*"%>
 <html>
 <head>
-<title>Base</title>
+<title>Гостевая книга</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"">
 <style type="text/css">
 
@@ -77,7 +77,6 @@ outline:none;
             <br>
             &nbsp;&nbsp;&nbsp;<a  href="messages">Переход к списку сообщений</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <input class="superbutton" type="submit" value="Сохранить" name="Save">
-                <input class="superbutton" type="reset" value="Очистить">
     </form>
 
 </body>

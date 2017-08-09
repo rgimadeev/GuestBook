@@ -46,7 +46,8 @@ public class MessageServlet  extends HttpServlet {
                        processRequest(req, resp);
                        resp.setContentType("text/html;charset=utf-8");
                        String add_message = "Сообщение было добавлено";
-                       req.getSession().setAttribute("message", add_message);
+                       req.getSession().setAttribute("message", add_message);//реализация через сессию
+                      // req.setAttribute("message", add_message);
                        MainServlet ms = new MainServlet();
                        ms.doGet(req, resp);
                    } catch (NamingException e) {
@@ -56,36 +57,32 @@ public class MessageServlet  extends HttpServlet {
 
                 } else {
                     String autorNameText = req.getParameter("autorName");
-                    req.getSession().setAttribute("autorNameTxt", autorNameText);//чтоб текст оставался при нажатие на "сохранить"
+                    req.setAttribute("autorNameTxt", autorNameText);//чтоб текст оставался при нажатие на "сохранить"
                     String textMessage = req.getParameter("messageDesc");
-                    req.getSession().setAttribute("messageTxt", textMessage);//чтоб текст оставался при нажатие на "сохранить"
+                    req.setAttribute("messageTxt", textMessage);//чтоб текст оставался при нажатие на "сохранить"
                     String maxMessageLenght = "Максимальное кол-во символов в тексте: 4000";
-                    req.getSession().setAttribute("maxMes", maxMessageLenght);
-                    resp.sendRedirect("/Message.jsp");
-                   // req.getRequestDispatcher("/Message.jsp").forward(req, resp);
+                    req.setAttribute("maxMes", maxMessageLenght);
+                    req.getRequestDispatcher("/Message.jsp").forward(req, resp);
                 }
             } else if (req.getParameter("Save") != null && req.getParameter("autorName") == "" && req.getParameter("messageDesc") != "") {
                 String textMessage = req.getParameter("messageDesc");
                 req.getSession().setAttribute("messageTxt", textMessage);//чтоб текст оставался при нажатие на "сохранить"
                 String autor_message = "Поле 'Автор' не должно быть пустым";
                 req.getSession().setAttribute("autorMes", autor_message);
-                resp.sendRedirect("/Message.jsp");
-                //req.getRequestDispatcher("/Message.jsp").forward(req, resp);
+                req.getRequestDispatcher("/Message.jsp").forward(req, resp);
 
             } else if (req.getParameter("Save") != null && req.getParameter("autorName") != "" && req.getParameter("messageDesc") == "") {
                 String autorNameText = req.getParameter("autorName");
-                req.getSession().setAttribute("autorNameTxt", autorNameText);//чтоб текст оставался при нажатие на "сохранить"
+                req.setAttribute("autorNameTxt", autorNameText);//чтоб текст оставался при нажатие на "сохранить"
                 String text_message = "Поле 'Текст сообщения' не должно быть пустым";
-                req.getSession().setAttribute("textMes", text_message);
-                resp.sendRedirect("/Message.jsp");
-               // req.getRequestDispatcher("/Message.jsp").forward(req, resp);
+                req.setAttribute("textMes", text_message);
+                req.getRequestDispatcher("/Message.jsp").forward(req, resp);
             } else {
                 String text_message = "Поле 'Текст сообщения' не должно быть пустым";
                 String autor_message = "Поле 'Автор' не должно быть пустым";
-                req.getSession().setAttribute("textMes", text_message);
-                req.getSession().setAttribute("autorMes", autor_message);
-                resp.sendRedirect("/Message.jsp");
-              //  req.getRequestDispatcher("/Message.jsp").forward(req, resp);
+                req.setAttribute("textMes", text_message);
+                req.setAttribute("autorMes", autor_message);
+                req.getRequestDispatcher("/Message.jsp").forward(req, resp);
             }
 
     }
