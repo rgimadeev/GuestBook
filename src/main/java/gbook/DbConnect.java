@@ -11,22 +11,32 @@ import java.util.*;
 
 public class DbConnect {
 
- /*  String url = "jdbc:postgresql://localhost:5432/guest_book";   // без пула БД
-    Connection conn = getConnection(url, "postgres", "317935"); */
-    Statement statement;
-    ResultSet resultset;
-    PreparedStatement stmt;
-    InitialContext ctx = new InitialContext();
-    DataSource ds = (DataSource) ctx.lookup("java:comp/env/jdbc/GuestBookDS");
-    Connection conn = ds.getConnection();
-   public DbConnect() throws ClassNotFoundException, SQLException, NamingException {
+    public Connection getConnection ()  {
+        InitialContext ctx = null;
+        DataSource ds = null;
+        try {
+            ctx = new InitialContext();
+            ds = (DataSource) ctx.lookup("java:comp/env/jdbc/GuestBookDS");
+        } catch (NamingException e) {
+            System.out.println(e.getMessage());;
+        }
+        Connection conn = null;
+        try {
+            conn = ds.getConnection();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return conn;
 
-   }
+    }
     public ArrayList<Message> getMessages() throws SQLException {
+        Connection dbConnection = null;
         Message mes = null;
         ArrayList<Message> messages = new ArrayList<Message>();
         try {
-            statement = conn.createStatement();
+            dbConnection = getConnection();
+            ResultSet resultset;
+            Statement statement = dbConnection.createStatement();
             String sql = "SELECT autor_name, text_message, publication_date FROM message_table order by publication_date desc";
             resultset = statement.executeQuery(sql);
             while (resultset.next()) {
@@ -37,20 +47,24 @@ public class DbConnect {
                 messages.add(mes);
                 System.out.println(mes.getAutorName() + " "
                         + mes.getMessageDesc() + " " + mes.getPublicationDate());
-
             }
         } catch (SQLException sql) {
             System.err.print("Error SQL : " + sql);
-        }
-        conn.close();
-        return messages;
+        } finally {
+            if (dbConnection != null) {
+                dbConnection.close();
+            }
+            return messages;
 
+        }
     }
 
     public void insertMessage(Message message) throws SQLException {
-
+        Connection dbConnection = null;
+        PreparedStatement stmt=null;
         try {
-            stmt = conn.prepareStatement("INSERT INTO message_table"
+            dbConnection=getConnection();
+            stmt = dbConnection.prepareStatement("INSERT INTO message_table"
                     + "(autor_name, text_message,publication_date)"
                     + "VALUES( ?,  ?, ?)");
             stmt.setString(1, message.getAutorName());
@@ -61,9 +75,14 @@ public class DbConnect {
             e.printStackTrace();
         } catch (ParseException e) {
             e.printStackTrace();
+        } finally {
+            if (stmt != null) {
+                stmt.close();
+            }
+        if (dbConnection != null) {
+            dbConnection.close();
         }
-        conn.close();
-
+    }
     }
     public  java.sql.Timestamp getCurrentDate() throws ParseException {
 

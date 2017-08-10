@@ -12,7 +12,7 @@ $(document).ready(function() {
                      datatype:"json",
                      success: function( data, textStatus, jqXHR) {
                           if(data.success){
-                           window.location.href = location.protocol+"/messages?sendMes=1";
+                           window.location.href ="/messages?sendMes=1";;
                           }
                           else if(data.errors){
                           for (var key in data.errors){

@@ -13,19 +13,8 @@ import java.text.ParseException;
 public class MessageServlet  extends HttpServlet {
 
     protected void processRequest(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException, NamingException {
-        // Установка кодировки для принятия параметров
-        try {
-            insertMessage(req);
-        } catch (ParseException e) {
-            e.printStackTrace();
-
-        } catch (SQLException sql_e) {
-            sql_e.printStackTrace();
-            throw new IOException(sql_e.getMessage());
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+            throws ServletException {
+        insertMessage(req);
 
     }
 
@@ -44,12 +33,8 @@ public class MessageServlet  extends HttpServlet {
         String reqAut=req.getParameter("autorName");
         String reqMesc=req.getParameter("messageDesc");
         if (reqAut != "" && reqMesc != "" && reqMesc.length() <= 4000 && reqAut.length() <= 35) {
-            try {
-                s = "{\"success\": true}";
-                processRequest(req, resp);
-            } catch (NamingException e) {
-                e.printStackTrace();
-            }
+            s = "{\"success\": true}";
+            processRequest(req, resp);
         }
         else if (reqAut == "" && reqMesc != "")
         {
@@ -76,14 +61,16 @@ public class MessageServlet  extends HttpServlet {
         out.close();
 
     }
-
-    private void insertMessage(HttpServletRequest req) throws SQLException, ParseException, IOException, ClassNotFoundException, NamingException {
+    private void insertMessage(HttpServletRequest req)  {
         DbConnect db = new DbConnect();
         Message s = prepareMessage(req);
-        db.insertMessage(s);
+        try {
+            db.insertMessage(s);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
-
-    private Message prepareMessage(HttpServletRequest req) throws ParseException, IOException {
+    private Message prepareMessage(HttpServletRequest req)  {
         Message s =new Message();
         s.setAutorName(req.getParameter("autorName"));
         s.setMessageDesc(req.getParameter("messageDesc"));

@@ -15,22 +15,11 @@ public class MainServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        DbConnect baseconnect = null;
-        try {
-            baseconnect = new DbConnect();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (NamingException e) {
-            e.printStackTrace();
-        }
+        DbConnect baseconnect =  new DbConnect();
         ArrayList<Message> list = null;
         try {
-
             list = baseconnect.getMessages();
             request.setAttribute("messageList", list);
-
             request.getRequestDispatcher("/ListMessage.jsp").forward(request, response);
         } catch (SQLException e) {
             e.printStackTrace();
