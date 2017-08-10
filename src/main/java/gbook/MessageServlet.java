@@ -47,12 +47,6 @@ public class MessageServlet  extends HttpServlet {
             try {
                 s = "{\"success\": true}";
                 processRequest(req, resp);
-                String queryString = req.getQueryString();
-                if (queryString=="1"){
-                    req.setAttribute("sMes",queryString );
-                    req.getRequestDispatcher("/ListMessage.jsp").forward(req, resp);
-
-                }
             } catch (NamingException e) {
                 e.printStackTrace();
             }
@@ -71,7 +65,7 @@ public class MessageServlet  extends HttpServlet {
             s = "{\"success\": false, \"errors\":{\"autorErr\": \"\",\"TextErr\": \"Максимальный размер поля 4000 символов\"}}";
            }
         else if (reqAut != "" && reqMesc != "" && reqAut.length() > 35 ){
-            s = "{\"success\": false, \"errors\":{\"autorErr\": \"Максимальный размер поля 25 символов\",\"TextErr\": \"\"}}";
+            s = "{\"success\": false, \"errors\":{\"autorErr\": \"Максимальный размер поля 35 символов\",\"TextErr\": \"\"}}";
         }
             else {
             s = "{\"success\": false, \"errors\":{\"autorErr\": \"Поле 'Автор' должно быть заполнено\",\"TextErr\": \"Поле 'Текст сообщения' должно быть заполнено\"}}";

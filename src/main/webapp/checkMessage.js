@@ -10,11 +10,9 @@ $(document).ready(function() {
                      url: "new-message",
                      data: data,
                      datatype:"json",
-                     cache: false,
                      success: function( data, textStatus, jqXHR) {
                           if(data.success){
-
-                               window.location.href = "http://localhost:8888/messages?sendMes=1";
+                           window.location.href = location.protocol+"/messages?sendMes=1";
                           }
                           else if(data.errors){
                           for (var key in data.errors){
@@ -32,7 +30,7 @@ $(document).ready(function() {
                                      }
 
 		});
-return false;
+           return false;
 });
 
 });
