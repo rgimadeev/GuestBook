@@ -38,8 +38,8 @@ public class MessageServlet  extends HttpServlet {
                     resp.setContentType("text/html;charset=utf-8");
                     String add_message = "Сообщение было добавлено";
                     req.setAttribute("message", add_message);
-                    MainServlet ms = new MainServlet();
-                    ms.doGet(req, resp);
+                    resp.sendRedirect("/messages");
+
 
 
                 } else {
