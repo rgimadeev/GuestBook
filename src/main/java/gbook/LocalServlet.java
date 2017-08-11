@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-
+//редирект
 public class LocalServlet extends HttpServlet{
 
         protected void doGet(HttpServletRequest request, HttpServletResponse response){

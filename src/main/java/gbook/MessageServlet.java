@@ -8,12 +8,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
-
+//Добавить новое сообщение
 public class MessageServlet  extends HttpServlet {
 
         protected void processRequest (HttpServletRequest req, HttpServletResponse resp)
                 {
-                    try {  // Установка кодировки для принятия параметров
+                    try {
                         req.setCharacterEncoding("UTF-8");
                         insertMessage(req);
                     } catch (UnsupportedEncodingException e) {
