@@ -40,7 +40,7 @@ color: black;
 </style>
 </head>
 <body>
-<h><center><p style="color:#0000FF">ГОСТЕВАЯ КНИГА:</center></h></p>
+<h><p style=">color:#0000FF">ГОСТЕВАЯ КНИГА:</h></p>
 <h><a name="top">Список сообщений:</a></h><br>
 <p><font size="5" color="#00ff00" face="Calligraph">${message}<br></font></p>
 
@@ -51,7 +51,7 @@ color: black;
       <p class="autor">
           <td>Автор: ${mes.getAutorName()}</td><br>
       </p>
-      <p class="message_text"
+      <p class="message_text">
           <td>${mes.getMessageDesc()}</td>
       </p>
       <p class="pub_date">

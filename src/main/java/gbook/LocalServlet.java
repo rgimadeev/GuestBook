@@ -9,8 +9,12 @@ import java.io.IOException;
 
 public class LocalServlet extends HttpServlet{
 
-        protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-            response.sendRedirect("/messages");
+        protected void doGet(HttpServletRequest request, HttpServletResponse response){
+            try {
+                response.sendRedirect("/messages");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
