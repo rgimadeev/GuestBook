@@ -7,77 +7,32 @@
 <html>
 <head>
 <title>Гостевая книга</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"">
-<style type="text/css">
-
-body {
-color:#00dddd;
-	background: silver url(images/bg2.png);
-	font-family: Calligraph, sans-serif;
-	font-size:x-large;
-}
-table {
-color: black;
-	background: silver url(images/bg2.png);
-	font-family: Calligraph, sans-serif;
-	font-size:large;
-}
-td.mes {
-color:red;
-font-family: Cambria, sans-serif;
-font-size:medium;
-}
-.superbutton {
-width:90px;
-height:30px;
-border-radius:30px;
-background:#459DE5;
-color:#fff;
-font-size:15px;
-cursor:pointer;
-}
-.superbutton:hover{
-background:#358DE5;
-}
-. superbutton:focus{
-outline:none;
-}
-</style>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="style.css">
 </head>
-<body>
-<h><p style="color:#0000FF">Добавление нового сообщения:</p></h><br>
+<body class="body2">
+<h><p class="h1">Добавление нового сообщения:</p></h><br>
  <form action="new-message" method="POST">
             <table class="table">
                 <tr>
                     <td>Автор:</td><td><input type="text" size="25" name="autorName" value="${autorNameTxt}"/></td>
-                    <td class="mes"><c:if test="${not empty autorMes}">
-                                       <div>
-                                           <c:out value="${autorMes}"/>
-                                       </div>
-                                       <c:set var="autorMes" value="" scope="session"/>
-                                    </c:if>
+                    <td><p class="p2"><c:forEach var="map" items="${requestScope.errorTxt}">
+                        <c:forEach var="hash" items="${map['aut_err']}">
+                            <option><c:out value="${hash.value}"/></option>
+                        </c:forEach>
+                    </c:forEach></p>
                     </td>
                 </tr>
                 <tr>
                     <td>Текст сообщения:</td><td><textarea name="messageDesc" style="width: 450px" rows="10" placeholder="${messageTxt}"></textarea></td>
-                    <td class="mes"><c:if test="${not empty textMes}">
-                                     <div>
-                                     <c:out value="${textMes}"/>
-                                     </div>
-                    <c:set var="textMes" value="" scope="session"/>
-                   </c:if>
-                   <c:if test="${not empty maxMes}">
-                     <div>
-                      <c:out value="${maxMes}"/>
-                                      </div>
-                   <c:set var="maxMes" value="" scope="session"/>
-                   </c:if></td>
+                    <td><p class="p2">${textMes}</p>
+                     <p class="p2">${maxMes}</p>
+                   </td>
                 </tr>
               </table>
             <br>
-            &nbsp;&nbsp;&nbsp;<a  href="messages">Переход к списку сообщений</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a  href="messages">Переход к списку сообщений</a>
                 <input class="superbutton" type="submit" value="Сохранить" name="Save">
     </form>
-
 </body>
 </html>

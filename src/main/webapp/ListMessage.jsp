@@ -8,41 +8,15 @@
 <head>
 <title>Гостевая книга</title>
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8"">
-<style type="text/css">
-body {
-	color:black ;
-	background: silver url(images/bg.jpg);
-	font-family: Calligraph, Regular;
-	font-size:x-large;
-}
-.autor {
-color: black;
-	background: silver url(images/bg.jpg);
-	font-family:Calligraph, sans-serif;
-	font-size:x-medium;
-
-}
-.pub_date {
-color: black;
-	background: silver url(images/bg.jpg);
-	font-family:Calligraph, sans-serif;
-	font-size:x-medium;
-	text-align: right;
-}
-.message_text{
-color: black;
-	background: silver (images/bg.jpg);;
-	font-family: Cambria, sans-serif;
-	font-size:x-medium;
-	text-align: left;
-}
-</style>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<link rel="stylesheet" type="text/css" href="style.css">
 </head>
-<body>
-<h><p style=">color:#0000FF">ГОСТЕВАЯ КНИГА:</h></p>
-<h><a name="top">Список сообщений:</a></h><br>
-<p><font size="5" color="#00ff00" face="Calligraph">${message}<br></font></p>
+<body class="body">
+<h class="h1"><p>ГОСТЕВАЯ КНИГА:</p></h>
+<h class="h2"><a name="top">Список сообщений:</a></h><br>
+<p class="p"><c:if test="${param.sendMes==1}">
+    <c:out value="Сообщение было отправлено"/>
+</c:if><br></p>
 
 
 <a href="new-message">Добавление нового сообщения</a><br>

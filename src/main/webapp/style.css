@@ -1,0 +1,82 @@
+.body {
+    color:black ;
+    background: silver url(images/bg.jpg);
+    font-family: Calligraph, Regular;
+    font-size:x-large;
+}
+.body2{
+    color:black ;
+    background: silver url(images/bg2.png);
+    font-family: Calligraph, Regular;
+    font-size:x-large;
+}
+.h1 {
+    color:#0000FF ;
+    font-family: Calligraph, Regular;
+    font-size:x-large;
+    text-align: center;
+}
+.h2 {
+    color:black ;
+    font-family: Calligraph, Regular;
+    font-size:x-large;
+}
+.p {
+    color:#00ff00;
+    font-family: Calligraph, Regular;
+    font-size:x-large;
+}
+.p2 {
+    color:#FF0000;
+    font-family: Calligraph, Regular;
+    font-size:large;
+}
+.autor {
+    color: black;
+    background: silver url(images/bg.jpg);
+    font-family:Calligraph, sans-serif;
+    font-size:large;
+
+}
+.pub_date {
+    color: black;
+    background: silver url(images/bg.jpg);
+    font-family:Calligraph, sans-serif;
+    font-size:large;
+    text-align: right;
+}
+.message_text{
+    color: black;
+    background: silver url(images/bg.jpg);
+    font-family: Cambria, sans-serif;
+    font-size:large;
+    text-align: left;
+}
+.table {
+    color: black;
+    background: silver url(images/bg2.png);
+    font-family: Calligraph, sans-serif;
+    font-size:large;
+}
+.td.mes {
+    color:red;
+    font-family: Cambria, sans-serif;
+    font-size:medium;
+}
+.superbutton {
+    width:90px;
+    height:30px;
+    border-radius:30px;
+    background:#459DE5;
+    color:#fff;
+    position:fixed;
+    left: 350px;
+    font-size:15px;
+    cursor:pointer;
+}
+.superbutton:hover{
+    background:#358DE5;
+}
+.superbutton:focus{
+    outline:none;
+}

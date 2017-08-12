@@ -24,14 +24,13 @@ public class DbConnect {
         return conn;
 
     }
-
         public ArrayList<Message> getMessages () {
         Connection dbconnection=null;
         Message mes = null;
         ResultSet resultset;
         ArrayList<Message> messages = new ArrayList<Message>();
         try  {
-           dbconnection=getDBConnection();
+            dbconnection=getDBConnection();
             Statement statement =dbconnection.createStatement();
             String sql = "SELECT autor_name, text_message, publication_date FROM message_table order by publication_date desc";
             resultset = statement.executeQuery(sql);
@@ -49,9 +48,6 @@ public class DbConnect {
         }
             return messages;
     }
-
-
-
 
     public void insertMessage(Message message) {
 
