@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.util.HashMap;
 
-
 public class MessageServlet  extends HttpServlet {
       private MessageService messageService= new  MessageService();
       private MessageValidation messageValidation=new MessageValidation ();
@@ -16,7 +15,6 @@ public class MessageServlet  extends HttpServlet {
    public void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
            req.getRequestDispatcher("/Message.jsp").forward(req, resp);
-
     }
     public void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
@@ -33,7 +31,6 @@ public class MessageServlet  extends HttpServlet {
             req.getRequestDispatcher("/Message.jsp").forward(req, resp);
         }
     }
-
     private Message createMessage(HttpServletRequest req)  {
         Message s =new Message();
         s.setAutorName(req.getParameter("autorName"));

@@ -9,7 +9,6 @@ public class SaveResult {
         return errors;
     }
     public void setErrors(HashMap<String, String> errors) {
-
         this.errors = errors;
     }
 }

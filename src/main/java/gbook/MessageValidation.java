@@ -1,13 +1,9 @@
 package gbook;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.util.HashMap;
 import java.util.Properties;
 
-import static jdk.nashorn.internal.objects.NativeMath.log;
 
 public class MessageValidation {
     String autorMessage=null;
@@ -24,12 +20,12 @@ public class MessageValidation {
            textMessage=property.getProperty("text_err");
            maxLengtText=property.getProperty("max_text_err");
        } catch (FileNotFoundException e) {
-           e.printStackTrace();
+           System.out.println(e.getMessage());
        }
        catch (UnsupportedEncodingException e) {
-           log("Error", e);
+           System.out.println(e.getMessage());
        } catch (IOException e) {
-           log("Error", e);
+           System.out.println(e.getMessage());
        }
    }
     public HashMap validate (Message mes) {
@@ -47,7 +43,7 @@ public class MessageValidation {
             hashMap.put("text_err", textMessage);
             return hashMap;
         } else if (!autorName.equals("") && !messageDesc.equals("") && messageDesc.length() > 100) {
-            hashMap.put("max_lt", textMessage);
+            hashMap.put("max_lt", maxLengtText);
             return hashMap;
         } else {
             hashMap.put("aut_err", autorMessage);
