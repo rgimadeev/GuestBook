@@ -11,7 +11,7 @@ import java.util.HashMap;
 public class MessageServlet  extends HttpServlet {
       private MessageService messageService= new  MessageService();
       private MessageValidation messageValidation=new MessageValidation ();
-      private HashMap<String,String> hashmap = new HashMap<String,String>();
+      private HashMap<String,String> hashmap;
 
    public void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
@@ -21,11 +21,12 @@ public class MessageServlet  extends HttpServlet {
     public void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
-        Message mes = CreateMessage(req);
-        SaveResult s = messageService.SaveMessage(mes);
-        if (s.getErrors()==null) {
+        Message mes = createMessage(req);
+        SaveResult s = messageService.saveMessage(mes);
+        if (s.getErrors()== null) {
             resp.sendRedirect("/messages?sendMes=1");
-        } else if (s.getErrors() !=null) {
+        }
+        else {
             req.setAttribute("autorNameTxt", mes.getAutorName());//чтоб текст оставался при нажатие на "сохранить"
             req.setAttribute("messageTxt", mes.getMessageDesc());
             req.setAttribute("errorTxt",s.getErrors());
@@ -33,7 +34,7 @@ public class MessageServlet  extends HttpServlet {
         }
     }
 
-    private Message CreateMessage(HttpServletRequest req)  {
+    private Message createMessage(HttpServletRequest req)  {
         Message s =new Message();
         s.setAutorName(req.getParameter("autorName"));
         s.setMessageDesc(req.getParameter("messageDesc"));

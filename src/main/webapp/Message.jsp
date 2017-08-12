@@ -16,17 +16,13 @@
             <table class="table">
                 <tr>
                     <td>Автор:</td><td><input type="text" size="25" name="autorName" value="${autorNameTxt}"/></td>
-                    <td><p class="p2"><c:forEach var="map" items="${requestScope.errorTxt}">
-                        <c:forEach var="hash" items="${map['aut_err']}">
-                            <option><c:out value="${hash.value}"/></option>
-                        </c:forEach>
-                    </c:forEach></p>
+                    <td><p class="p2">${errorTxt.aut_err}</p>
                     </td>
                 </tr>
                 <tr>
                     <td>Текст сообщения:</td><td><textarea name="messageDesc" style="width: 450px" rows="10" placeholder="${messageTxt}"></textarea></td>
-                    <td><p class="p2">${textMes}</p>
-                     <p class="p2">${maxMes}</p>
+                    <td><p class="p2">${errorTxt.text_err}</p>
+                     <p class="p2">${errorTxt.max_lt}</p>
                    </td>
                 </tr>
               </table>

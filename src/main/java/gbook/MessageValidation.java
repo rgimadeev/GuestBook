@@ -13,8 +13,7 @@ public class MessageValidation {
     String autorMessage=null;
     String textMessage=null;
     String maxLengtText=null;
-    private HashMap<String,String> hashMap = new HashMap<String,String>();
-   public void Reader(String autorMess,String textMess,String maxLenghtText){
+   public void reader(String autorMess,String textMess,String maxLenghtText){
        InputStream stream = null;
        try {
            stream = new FileInputStream(new File("C:/Users/rgimadeev/IdeaProjects/GuestBook/src/main/resources/text.properties"));
@@ -33,20 +32,21 @@ public class MessageValidation {
            log("Error", e);
        }
    }
-    public HashMap Validate (Message mes) {
-        Reader(autorMessage, textMessage, maxLengtText);
+    public HashMap validate (Message mes) {
+        reader(autorMessage, textMessage, maxLengtText);
+        HashMap<String,String> hashMap=new HashMap<String,String>();
         String autorName = mes.getAutorName();
         String messageDesc = mes.getMessageDesc();
-        if (autorName != "" && messageDesc != "" && messageDesc.length() <= 100) {
-            return hashMap=null;
-        } else if (autorName == "" && messageDesc != "") {
+        if (!autorName.equals("") && !messageDesc.equals("")  && messageDesc.length() <= 100) {
+            return null;
+        } else if (autorName.equals("") && !messageDesc.equals("")) {
            hashMap.put("aut_err", autorMessage);
            return hashMap;
 
-        } else if (autorName != "" && messageDesc == "") {
+        } else if (!autorName.equals("") && messageDesc.equals("")) {
             hashMap.put("text_err", textMessage);
             return hashMap;
-        } else if (autorName != "" && messageDesc != "" && messageDesc.length() > 100) {
+        } else if (!autorName.equals("") && !messageDesc.equals("") && messageDesc.length() > 100) {
             hashMap.put("max_lt", textMessage);
             return hashMap;
         } else {
