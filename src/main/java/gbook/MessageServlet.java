@@ -12,11 +12,6 @@ import java.text.ParseException;
 
 public class MessageServlet  extends HttpServlet {
 
-    protected void processRequest(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException {
-        insertMessage(req);
-    }
-
     public void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         req.getRequestDispatcher("/Message.jsp").forward(req, resp);
@@ -32,7 +27,7 @@ public class MessageServlet  extends HttpServlet {
         String reqMesc=req.getParameter("messageDesc");
         if (reqAut != "" && reqMesc != "" && reqMesc.length() <= 4000 && reqAut.length() <= 35) {
             s = "{\"success\": true}";
-            processRequest(req, resp);
+            insertMessage(req,resp);
         }
         else if (reqAut == "" && reqMesc != "")
         {
@@ -59,13 +54,13 @@ public class MessageServlet  extends HttpServlet {
         out.close();
 
     }
-    private void insertMessage(HttpServletRequest req)  {
+    private void insertMessage(HttpServletRequest req,HttpServletResponse resp)  {
         DbConnect db = new DbConnect();
         Message s = prepareMessage(req);
         try {
             db.insertMessage(s);
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println("Error Sql: "+e.getMessage());
         }
     }
     private Message prepareMessage(HttpServletRequest req)  {
