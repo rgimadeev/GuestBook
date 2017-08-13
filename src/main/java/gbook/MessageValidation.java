@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.HashMap;
 import java.util.Properties;
 
-
+//
 public class MessageValidation {
     String autorMessage=null;
     String textMessage=null;
