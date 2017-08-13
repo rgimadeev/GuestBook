@@ -1,0 +1,9 @@
+# Created by .ignore support plugin (hsz.mobi)
+.gitignore
+.idea/
+src/main/webapp/WEB-INF/classes/
+src/main/webapp/images/
+target/
+main/webapp/WEB-INF/classes/
+main/webapp/images/
+*.iml
