@@ -10,10 +10,9 @@ public class MessageValidation {
     String textMessage=null;
     String maxLengtText=null;
    public void reader(String autorMess,String textMess,String maxLenghtText){
-       InputStream stream = null;
-       try {
-           stream = new FileInputStream(new File("C:/Users/rgimadeev/IdeaProjects/GuestBook/src/main/resources/text.properties"));
-           InputStreamReader reader = new InputStreamReader(stream, "UTF-8");
+       try ( InputStream stream = new FileInputStream(new File("C:/Users/rgimadeev/IdeaProjects/GuestBook/src/main/resources/text.properties"));
+       InputStreamReader reader = new InputStreamReader(stream, "UTF-8");
+       ){
            Properties property = new Properties();
            property.load(reader);
            autorMessage = property.getProperty("aut_err");
@@ -22,7 +21,7 @@ public class MessageValidation {
        } catch (FileNotFoundException e) {
            System.out.println(e.getMessage());
        }
-       catch (UnsupportedEncodingException e) {
+      catch (UnsupportedEncodingException e) {
            System.out.println(e.getMessage());
        } catch (IOException e) {
            System.out.println(e.getMessage());

@@ -6,32 +6,29 @@ import javax.sql.DataSource;
 import java.sql.*;
 import java.util.*;
 
-import static jdk.nashorn.internal.objects.NativeMath.log;
-
-
 public class DbConnect {
     public  Connection getDBConnection() {
-        Connection conn = null;
+        Connection conn=null;
         try {
             InitialContext ctx = new InitialContext();
             DataSource ds = (DataSource) ctx.lookup("java:comp/env/jdbc/GuestBookDS");
             conn = ds.getConnection();
+
         } catch (NamingException ex) {
-            log("Error", ex);
+            System.out.println(ex.getMessage());
         } catch (SQLException ex) {
-            log("Error SQL", ex);
+            System.out.println("Error Sql: "+ex.getMessage());
         }
         return conn;
 
     }
         public ArrayList<Message> getMessages () {
-        Connection dbconnection=null;
         Message mes = null;
         ResultSet resultset;
         ArrayList<Message> messages = new ArrayList<Message>();
-        try  {
-            dbconnection=getDBConnection();
-            Statement statement =dbconnection.createStatement();
+        try( Connection dbconnection=getDBConnection();
+             Statement statement =dbconnection.createStatement();
+         ){
             String sql = "SELECT autor_name, text_message, publication_date FROM message_table order by publication_date desc";
             resultset = statement.executeQuery(sql);
             while (resultset.next()) {
@@ -44,7 +41,7 @@ public class DbConnect {
                         + mes.getMessageDesc() + " " + mes.getPublicationDate());
             }
         } catch (SQLException e) {
-            log("Error SQL", e);
+            System.out.println("Error Sql: "+e.getMessage());
         }
             return messages;
     }
@@ -61,7 +58,7 @@ public class DbConnect {
             stmt.setTimestamp(3,new java.sql.Timestamp (getCurrentDate().getTime()));
             stmt.executeUpdate();
         } catch (SQLException e) {
-            log( "Error SQL" , e);
+            System.out.println("Error Sql: "+e.getMessage());
         }
     }
     public  java.sql.Timestamp getCurrentDate()  {
