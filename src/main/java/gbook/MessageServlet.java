@@ -15,7 +15,6 @@ public class MessageServlet  extends HttpServlet {
     protected void processRequest(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException {
         insertMessage(req);
-
     }
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -23,7 +22,6 @@ public class MessageServlet  extends HttpServlet {
         req.getRequestDispatcher("/Message.jsp").forward(req, resp);
 
     }
-
     public void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");

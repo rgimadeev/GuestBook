@@ -17,15 +17,9 @@ public class MainServlet extends HttpServlet {
             throws ServletException, IOException {
         DbConnect baseconnect =  new DbConnect();
         ArrayList<Message> list = null;
-        try {
-            list = baseconnect.getMessages();
-            request.setAttribute("messageList", list);
-            request.getRequestDispatcher("/ListMessage.jsp").forward(request, response);
-        } catch (SQLException e) {
-            e.printStackTrace();
-
-        }
-
+        list = baseconnect.getMessages();
+        request.setAttribute("messageList", list);
+        request.getRequestDispatcher("/ListMessage.jsp").forward(request, response);
     }
 
 }

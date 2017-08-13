@@ -29,14 +29,13 @@ public class DbConnect {
         return conn;
 
     }
-    public ArrayList<Message> getMessages() throws SQLException {
-        Connection dbConnection = null;
+    public ArrayList<Message> getMessages()  {
+
         Message mes = null;
         ArrayList<Message> messages = new ArrayList<Message>();
-        try {
-            dbConnection = getConnection();
+        try(Connection dbConnection=getConnection();
+            Statement statement = dbConnection.createStatement()) {
             ResultSet resultset;
-            Statement statement = dbConnection.createStatement();
             String sql = "SELECT autor_name, text_message, publication_date FROM message_table order by publication_date desc";
             resultset = statement.executeQuery(sql);
             while (resultset.next()) {
@@ -49,41 +48,28 @@ public class DbConnect {
                         + mes.getMessageDesc() + " " + mes.getPublicationDate());
             }
         } catch (SQLException sql) {
-            System.err.print("Error SQL : " + sql);
-        } finally {
-            if (dbConnection != null) {
-                dbConnection.close();
-            }
+            System.out.println("Error Sql: "+sql.getMessage());
+        }
             return messages;
 
         }
-    }
 
     public void insertMessage(Message message) throws SQLException {
-        Connection dbConnection = null;
-        PreparedStatement stmt=null;
-        try {
-            dbConnection=getConnection();
-            stmt = dbConnection.prepareStatement("INSERT INTO message_table"
+        try(Connection dbConnection=getConnection();
+            PreparedStatement stmt=dbConnection.prepareStatement("INSERT INTO message_table"
                     + "(autor_name, text_message,publication_date)"
-                    + "VALUES( ?,  ?, ?)");
+                    + "VALUES( ?,  ?, ?)");) {
             stmt.setString(1, message.getAutorName());
             stmt.setString(2, message.getMessageDesc());
             stmt.setTimestamp(3,new java.sql.Timestamp (getCurrentDate().getTime()));
             stmt.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println("Error Sql: "+e.getMessage());
         } catch (ParseException e) {
-            e.printStackTrace();
-        } finally {
-            if (stmt != null) {
-                stmt.close();
-            }
-        if (dbConnection != null) {
-            dbConnection.close();
+            System.out.println("ParseException: "+e.getMessage());
         }
     }
-    }
+
     public  java.sql.Timestamp getCurrentDate() throws ParseException {
 
         java.util.Date today = new java.util.Date();
