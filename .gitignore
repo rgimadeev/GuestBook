@@ -6,3 +6,4 @@ src/main/webapp/images/
 target/
 .idea/
 *.iml
+context.xml
