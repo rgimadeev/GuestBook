@@ -1,26 +1,12 @@
-# Created by .ignore support plugin (hsz.mobi)
-# Compiled class file
-.gitignore
-*.class
-gbookapp.iml
+
+# Intellij Idea
 .idea/
-target/
-*.log
-*.ctxt
-context.xml
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
-# Package Files #
-*.jar
-*.war
-*.ear
-*.zip
-*.tar.gz
-*.rar
-
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
-src/main/webapp/WEB-INF/classes/
-src/main/webapp/images/
+*.iml
+*.iws
+*.ipr
+# Java
+*.class
+*.classpath
+*.project
+# Maven
+target

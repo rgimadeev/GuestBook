@@ -1,5 +1,6 @@
 package gbook;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class MessageService {
@@ -16,4 +17,9 @@ public class MessageService {
              return saveResult;
         }
     }
+    public ArrayList<Message> selectMessage() {
+        return   dbConnect.getMessages();
+
+    }
+
 }

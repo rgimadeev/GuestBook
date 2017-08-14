@@ -32,7 +32,7 @@ public class MessageValidation {
         HashMap<String,String> hashMap=new HashMap<String,String>();
         String autorName = mes.getAutorName();
         String messageDesc = mes.getMessageDesc();
-        if (!autorName.equals("") && !messageDesc.equals("")  && messageDesc.length() <= 100) {
+        if (!autorName.equals("") && !messageDesc.equals("")  && messageDesc.length() <= 4000) {
             return null;
         } else if (autorName.equals("") && !messageDesc.equals("")) {
            hashMap.put("aut_err", autorMessage);
@@ -41,7 +41,7 @@ public class MessageValidation {
         } else if (!autorName.equals("") && messageDesc.equals("")) {
             hashMap.put("text_err", textMessage);
             return hashMap;
-        } else if (!autorName.equals("") && !messageDesc.equals("") && messageDesc.length() > 100) {
+        } else if (!autorName.equals("") && !messageDesc.equals("") && messageDesc.length() > 4000) {
             hashMap.put("max_lt", maxLengtText);
             return hashMap;
         } else {
