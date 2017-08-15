@@ -4,7 +4,7 @@ $(document).ready(function() {
             e.preventDefault();
      });
        $("#submitButton").click(function(e){
-            var data = $(MessageForm).serialize();
+            var data =$(MessageForm).serialize();
          $.ajax({
                      type: "POST",
                      url: "new-message",
@@ -12,7 +12,7 @@ $(document).ready(function() {
                      datatype:"json",
                      success: function( data, textStatus, jqXHR) {
                           if(data.success){
-                           window.location.href ="/messages?sendMes=1";;
+                           window.location.href ="/messages?sendMes=1";
                           }
                           else if(data.errors){
                           for (var key in data.errors){
@@ -20,14 +20,10 @@ $(document).ready(function() {
                          }
                           }
                           },
-
                      error: function(jqXHR, textStatus, errorThrown){
                           console.log("Something really bad happened " + textStatus);
-                     },
-                       complete: function(jqXHR, textStatus){
-                                         //enable the button
-                                         $('#submitButton').attr("disabled", false);
-                                     }
+                     }
+
 
 		});
            return false;

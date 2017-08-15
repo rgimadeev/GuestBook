@@ -9,58 +9,27 @@
 <title>Гостевая книга</title>
 <meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<style type="text/css">
-body {
-	color:black ;
-	background: silver url(images/bg.jpg);
-	font-family: Calligraph, Regular;
-	font-size:x-large;
-}
-.autor {
-color: black;
-	background: silver url(images/bg.jpg);
-	font-family:Calligraph, sans-serif;
-	font-size:x-medium;
+<link rel="stylesheet" type="text/css" href="style.css">
 
-}
-.pub_date {
-color: black;
-	background: silver url(images/bg.jpg);
-	font-family:Calligraph, sans-serif;
-	font-size:x-medium;
-	text-align: right;
-}
-.message_text{
-color: black;
-	background: silver (images/bg.jpg);;
-	font-family: Cambria, sans-serif;
-	font-size:x-medium;
-	text-align: left;
-}
-</style>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js" type="text/javascript"></script>
- <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
-<script type="text/javascript" src="checkMessage.js"></script>
 </head>
 <body>
-<h><center><p style="color:#0000FF">ГОСТЕВАЯ КНИГА:</center></h></p>
+<h class="h"><p>ГОСТЕВАЯ КНИГА:</h></p>
 <h><a name="top">Список сообщений:</a></h><br>
-<p><font size="5" color="#00ff00" face="Calligraph"></p><c:if test="${param.sendMes==1}">
-                                                          <c:out value="Сообщение было отправлено"/><br>
-                                                          </c:if><br>
+<p class="p"><c:if test="${param.sendMes==1}">
+              <c:out value="Сообщение было отправлено"/><br>
+              </c:if><br></p>
 <a href="new-message">Добавление нового сообщения</a><br>
 
       <c:forEach var="mes" items="${messageList}">
       <p class="autor">
           <td>Автор: ${mes.getAutorName()}</td><br>
       </p>
-      <p class="message_text"
+      <p class="message_text">
           <td>${mes.getMessageDesc()}</td>
       </p>
       <p class="pub_date">
           <td>Дата публикации:  <fmt:formatDate pattern="dd.MM.YYYY HH:mm" value="${mes.getPublicationDate()}" /></td><br>
           <td><a href="#top">Наверх</a></td><br>
-          <td>--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</td>
         </p><br>
 
       </c:forEach>

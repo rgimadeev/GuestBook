@@ -1,17 +1,15 @@
 package gbook;
 
-import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.*;
-import java.text.ParseException;
+
 
 public class MessageServlet  extends HttpServlet {
-
+    MessageService messageService=new MessageService();
     public void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         req.getRequestDispatcher("/Message.jsp").forward(req, resp);
@@ -21,49 +19,35 @@ public class MessageServlet  extends HttpServlet {
             throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
         resp.setContentType("application/json;charset=utf-8");
+        Message message=createMessage(req);
+        SaveResult result=messageService.saveMessage(message);
         PrintWriter out = resp.getWriter();
         String s=null;
-        String reqAut=req.getParameter("autorName");
-        String reqMesc=req.getParameter("messageDesc");
-        if (reqAut != "" && reqMesc != "" && reqMesc.length() <= 4000 && reqAut.length() <= 35) {
-            s = "{\"success\": true}";
-            insertMessage(req,resp);
+        System.out.println(result.getHashMap());
+        if (result.getHashMap() == null){
+            s="{\"success\": true}" ;
         }
-        else if (reqAut == "" && reqMesc != "")
-        {
-
-             s = "{\"success\": false, \"errors\":{\"autorErr\": \"Поле 'Автор' должно быть заполнено\",\"TextErr\": \"\"}}";
-
+        else  if(result.getHashMap().get("s1") != null) {
+            s = result.getHashMap().get("s1");
         }
-             else if  (reqAut != "" && reqMesc == "") {
-            s = "{\"success\": false, \"errors\":{\"autorErr\": \"\",\"TextErr\": \"Поле 'Текст сообщения' должно быть заполнено\"}}";
-
+       else if (result.getHashMap().get("s2") != null) {
+            s = result.getHashMap().get("s2");
         }
-        else if(reqAut != "" && reqMesc != "" && reqMesc.length() > 4000 ) {
-            s = "{\"success\": false, \"errors\":{\"autorErr\": \"\",\"TextErr\": \"Максимальный размер поля 4000 символов\"}}";
-           }
-        else if (reqAut != "" && reqMesc != "" && reqAut.length() > 35 ){
-            s = "{\"success\": false, \"errors\":{\"autorErr\": \"Максимальный размер поля 35 символов\",\"TextErr\": \"\"}}";
+        else if (result.getHashMap().get("s3") != null) {
+            s = result.getHashMap().get("s3");
         }
-            else {
-            s = "{\"success\": false, \"errors\":{\"autorErr\": \"Поле 'Автор' должно быть заполнено\",\"TextErr\": \"Поле 'Текст сообщения' должно быть заполнено\"}}";
-
+        else if (result.getHashMap().get("s4") != null) {
+            s = result.getHashMap().get("s4");
+        }
+        else if (result.getHashMap().get("s5") != null) {
+            s = result.getHashMap().get("s5");
         }
         out.println(s);
         out.flush();
         out.close();
+    }
 
-    }
-    private void insertMessage(HttpServletRequest req,HttpServletResponse resp)  {
-        DbConnect db = new DbConnect();
-        Message s = prepareMessage(req);
-        try {
-            db.insertMessage(s);
-        } catch (SQLException e) {
-            System.out.println("Error Sql: "+e.getMessage());
-        }
-    }
-    private Message prepareMessage(HttpServletRequest req)  {
+    private Message createMessage(HttpServletRequest req)  {
         Message s =new Message();
         s.setAutorName(req.getParameter("autorName"));
         s.setMessageDesc(req.getParameter("messageDesc"));

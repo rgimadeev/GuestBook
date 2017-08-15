@@ -54,7 +54,7 @@ public class DbConnect {
 
         }
 
-    public void insertMessage(Message message) throws SQLException {
+    public void insertMessage(Message message)  {
         try(Connection dbConnection=getConnection();
             PreparedStatement stmt=dbConnection.prepareStatement("INSERT INTO message_table"
                     + "(autor_name, text_message,publication_date)"
@@ -65,12 +65,10 @@ public class DbConnect {
             stmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Error Sql: "+e.getMessage());
-        } catch (ParseException e) {
-            System.out.println("ParseException: "+e.getMessage());
         }
     }
 
-    public  java.sql.Timestamp getCurrentDate() throws ParseException {
+    public  java.sql.Timestamp getCurrentDate(){
 
         java.util.Date today = new java.util.Date();
         return new java.sql.Timestamp(today.getTime());
