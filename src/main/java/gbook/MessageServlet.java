@@ -8,7 +8,6 @@ import java.io.*;
 
 public class MessageServlet  extends HttpServlet {
       private MessageService messageService= new  MessageService();
-      private MessageValidation messageValidation=new MessageValidation ();
 
    public void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
