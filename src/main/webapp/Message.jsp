@@ -8,21 +8,21 @@
 <head>
 <title>Гостевая книга</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" type="text/css" href="style2.css">
 </head>
-<body class="body2">
-<h><p class="h1">Добавление нового сообщения:</p></h><br>
+<body class="body">
+<h><p class="h">Добавление нового сообщения:</p></h><br>
  <form action="new-message" method="POST">
             <table class="table">
                 <tr>
                     <td>Автор:</td><td><input type="text" size="25" name="autorName" value="${autorNameTxt}"/></td>
-                    <td><p class="p2">${errorTxt.aut_err}</p>
+                    <td class="mes"><p>${errorTxt.aut_err}</p>
                     </td>
                 </tr>
                 <tr>
                     <td>Текст сообщения:</td><td><textarea name="messageDesc" style="width: 450px" rows="10" placeholder="${messageTxt}"></textarea></td>
-                    <td><p class="p2">${errorTxt.text_err}</p>
-                     <p class="p2">${errorTxt.max_lt}</p>
+                    <td class="mes"><p>${errorTxt.text_err}</p>
+                     <p>${errorTxt.max_lt}</p>
                    </td>
                 </tr>
               </table>

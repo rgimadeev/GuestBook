@@ -12,7 +12,7 @@
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body class="body">
-<h class="h1"><p>ГОСТЕВАЯ КНИГА:</p></h>
+<h class="h"><p>ГОСТЕВАЯ КНИГА:</p></h>
 <h class="h2"><a name="top">Список сообщений:</a></h><br>
 <p class="p"><c:if test="${param.sendMes==1}">
     <c:out value="Сообщение было отправлено"/>
