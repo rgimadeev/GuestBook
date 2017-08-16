@@ -4,7 +4,7 @@ package gbook;
 import java.util.HashMap;
 
 public class SaveResult {
-    HashMap<String,String> hashMap=new HashMap<String,String>();
+    HashMap<String,String> hashMap;
 
     public HashMap<String, String> getHashMap() {
         return hashMap;

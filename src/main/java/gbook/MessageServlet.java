@@ -24,7 +24,7 @@ public class MessageServlet  extends HttpServlet {
         PrintWriter out = resp.getWriter();
         String s=null;
         System.out.println(result.getHashMap());
-        if (result.getHashMap() == null){
+        if (result.getHashMap()==null){
             s="{\"success\": true}" ;
         }
         else  if(result.getHashMap().get("s1") != null) {

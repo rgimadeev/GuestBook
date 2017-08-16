@@ -13,9 +13,7 @@ public class MessageService {
         errors = validator.validate(message);
         if(errors== null){
             dbConnect.insertMessage(message);
-            SaveResult res=new SaveResult();
-            res.setHashMap(errors);
-            return res;
+            return new SaveResult();
         }
         else {
             SaveResult res=new SaveResult();
