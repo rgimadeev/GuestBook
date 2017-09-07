@@ -1,48 +1,43 @@
-body {
+.body {
     color:black ;
     background: silver url(images/bg.jpg);
     font-family: Calligraph, Regular;
     font-size:x-large;
 }
-.h {
-    color:#0000FF;
-    text-align: center;
-    font-size:x-large;
+
+.h{
+    color:#0000FF ;
     font-family: Calligraph, Regular;
+    font-size:x-large;
+    text-align: center;
 }
 .h2 {
-    color:#0000FF;
-    text-align: left;
-    font-size:x-large;
+    color:black ;
     font-family: Calligraph, Regular;
-}
-.autor {
-    color: black;
-    background: silver url(images/bg.jpg);
-    font-family:Calligraph, sans-serif;
     font-size:x-large;
-    text-align: left;
 }
 .p {
     color:#00ff00;
+    font-family: Calligraph, Regular;
     font-size:x-large;
-    font-family:Calligraph, sans-serif;
-    text-align: left;
+}
 
+.autor {
+    color: black;
+    font-family:Calligraph, sans-serif;
+    font-size:large;
+    text-align: left;
 
 }
 .pub_date {
     color: black;
-    background: silver url(images/bg.jpg);
     font-family:Calligraph, sans-serif;
     font-size:large;
     text-align: right;
 }
 .message_text{
     color: black;
-    background: silver url(images/bg.jpg);;
     font-family: Cambria, sans-serif;
     font-size:large;
     text-align: left;
 }
-

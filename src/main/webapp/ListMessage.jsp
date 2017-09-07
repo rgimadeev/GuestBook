@@ -12,7 +12,7 @@
 <link rel="stylesheet" type="text/css" href="style.css">
 
 </head>
-<body>
+<body class="body">
 <h class="h"><p>ГОСТЕВАЯ КНИГА:</h></p>
 <h><a name="top">Список сообщений:</a></h><br>
 <p class="p"><c:if test="${param.sendMes==1}">

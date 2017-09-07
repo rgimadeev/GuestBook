@@ -31,7 +31,8 @@
             <br>
             <a  href="messages">Переход к списку сообщений</a>
              <input class="superbutton" id="submitButton" type="submit" value="Сохранить" >
-             <input class="superbutton2" id="submitButton2" type="reset" value="Очистить" >
+             <input class="superbuttonTwo" id="submitButtonTwo" type="reset" value="Очистить" >
+
     </form>
 </body>
 </html>

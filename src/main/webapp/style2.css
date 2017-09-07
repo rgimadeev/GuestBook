@@ -1,6 +1,6 @@
 .body {
     color:black ;
-    background: silver url(images/bg.jpg);
+    background: silver url(images/bg2.jpg);
     font-family: Calligraph, Regular;
     font-size:x-large;
 }
@@ -22,7 +22,7 @@
     background:#459DE5;
     color:#fff;
     position:fixed;
-    left: 350px;
+    left: 450px;
     font-size:15px;
     cursor:pointer;
 }
@@ -32,20 +32,20 @@
 .superbutton:focus {
     outline: none;
 }
-.superbutton2 {
+.superbuttonTwo {
     width:90px;
     height:30px;
     border-radius:30px;
     background:#459DE5;
     color:#fff;
     position:fixed;
-    left: 450px;
+    left: 1950px;
     font-size:15px;
     cursor:pointer;
 }
-.superbutton2:hover{
+.superbuttonTwo:hover{
     background:#358DE5;
 }
-.superbutton2:focus {
+.superbuttonTwo:focus {
     outline: none;
 }
