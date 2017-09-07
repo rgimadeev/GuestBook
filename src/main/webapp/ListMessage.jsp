@@ -13,11 +13,12 @@
 
 </head>
 <body class="body">
-<h class="h"><p>ГОСТЕВАЯ КНИГА:</h></p>
+<h class="h"><p>ГОСТЕВАЯ КНИГА:</p></h>
 <h><a name="top">Список сообщений:</a></h><br>
 <p class="p"><c:if test="${param.sendMes==1}">
               <c:out value="Сообщение было отправлено"/><br>
               </c:if><br></p>
+
 <a href="new-message">Добавление нового сообщения</a><br>
 
       <c:forEach var="mes" items="${messageList}">

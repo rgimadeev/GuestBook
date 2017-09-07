@@ -26,26 +26,11 @@
     font-size:15px;
     cursor:pointer;
 }
+
 .superbutton:hover{
     background:#358DE5;
 }
+
 .superbutton:focus {
-    outline: none;
-}
-.superbuttonTwo {
-    width:90px;
-    height:30px;
-    border-radius:30px;
-    background:#459DE5;
-    color:#fff;
-    position:fixed;
-    left: 1950px;
-    font-size:15px;
-    cursor:pointer;
-}
-.superbuttonTwo:hover{
-    background:#358DE5;
-}
-.superbuttonTwo:focus {
     outline: none;
 }
