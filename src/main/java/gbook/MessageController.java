@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
 
 @Controller
-public class MessageController extends HttpServlet {
+public class MessageController {
       private MessageService messageService= new  MessageService();
     @RequestMapping(value = "/new-message", method = RequestMethod.GET)
     public String transitionOnPage(){
