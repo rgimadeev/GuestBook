@@ -9,7 +9,7 @@
 <title>Гостевая книга</title>
 <meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" type="text/css" href="../../style.css">
 </head>
 <body class="body">
 <h class="h"><p>ГОСТЕВАЯ КНИГА:</p></h>
@@ -26,7 +26,7 @@
           <td>Автор: ${mes.getAutorName()}</td><br>
       </p>
       <p class="message_text">
-          <td>${mes.getMessageDesc()}</td>
+          <td>${mes.getTextMessage()}</td>
       </p>
       <p class="pub_date">
           <td>Дата публикации:  <fmt:formatDate pattern="dd.MM.YYYY HH:mm" value="${mes.getPublicationDate()}" /></td><br>

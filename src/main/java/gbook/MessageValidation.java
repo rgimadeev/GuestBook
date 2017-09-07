@@ -31,7 +31,7 @@ public class MessageValidation {
         reader(autorMessage, textMessage, maxLengtText);
         HashMap<String,String> hashMap=new HashMap<String,String>();
         String autorName = mes.getAutorName();
-        String messageDesc = mes.getMessageDesc();
+        String messageDesc = mes.getTextMessage();
         if (!autorName.equals("") && !messageDesc.equals("")  && messageDesc.length() <= 4000) {
             return null;
         } else if (autorName.equals("") && !messageDesc.equals("")) {

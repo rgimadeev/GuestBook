@@ -8,7 +8,7 @@
 <head>
 <title>Гостевая книга</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel="stylesheet" type="text/css" href="style2.css">
+<link rel="stylesheet" type="text/css" href="../../style2.css">
 </head>
 <body class="body">
 <h><p class="h">Добавление нового сообщения:</p></h><br>

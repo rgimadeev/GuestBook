@@ -1,6 +1,6 @@
 package gbook;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.HashMap;
 
 public class MessageService {
@@ -9,6 +9,7 @@ public class MessageService {
     public SaveResult saveMessage(Message mes) {
         HashMap<String, String> errors = validator.validate(mes);
         if (errors == null) {
+            mes.setPublicationDate(dbConnect.getCurrentDate());
             dbConnect.insertMessage(mes);
             return new SaveResult();
         } else {
@@ -17,7 +18,7 @@ public class MessageService {
              return saveResult;
         }
     }
-    public ArrayList<Message> selectMessage() {
+    public List<Message> selectMessage() {
         return   dbConnect.getMessages();
 
     }
