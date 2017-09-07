@@ -10,7 +10,7 @@ import java.util.List;
 public class MainController {
     private MessageService messageService= new  MessageService();
   @RequestMapping(value = "/messages", method = RequestMethod.GET)
-  public String MainController(Model model ){
+  public String showAllMessages(Model model ){
       List<Message> list = messageService.selectMessage();
       model.addAttribute("messageList", list);
       return "ListMessage";
