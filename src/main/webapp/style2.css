@@ -22,7 +22,7 @@
     background:#459DE5;
     color:#fff;
     position:fixed;
-    left: 450px;
+    left: 350px;
     font-size:15px;
     cursor:pointer;
 }
@@ -30,7 +30,26 @@
 .superbutton:hover{
     background:#358DE5;
 }
-
 .superbutton:focus {
     outline: none;
 }
+
+.superbutton2 {
+    width:90px;
+    height:30px;
+    border-radius:30px;
+    background:#459DE5;
+    color:#fff;
+    position:fixed;
+    left: 450px;
+    font-size:15px;
+    cursor:pointer;
+}
+
+.superbutton2:hover{
+    background:#358DE5;
+}
+.superbutton2:focus {
+    outline: none;
+}
+
