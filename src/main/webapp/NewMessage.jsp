@@ -23,7 +23,8 @@
         </tr>
         <tr>
             <td>Текст сообщения:</td>
-            <td><textarea name="messageDesc" style="width: 450px" rows="10" placeholder="${messageText}"></textarea></td>
+            <td><textarea name="messageDesc" style="width: 450px" rows="10" placeholder="${messageText}"></textarea>
+            </td>
             <td class="error_text"><p>${errorText.show_messagetext_error}</p>
                 <p>${errorText.show_max_kol_messagetext_error}</p>
             </td>
