@@ -21,9 +21,9 @@ public class MessageValidationImpl implements MessageValidation {
         ) {
             Properties errorMessages = new Properties();
             errorMessages.load(reader);
-            authorMessage = errorMessages.getProperty("author_error");
-            textMessage = errorMessages.getProperty("messagetext_error");
-            maxLengtMessageText = errorMessages.getProperty("max_kol_messagetext_error");
+            authorMessage = errorMessages.getProperty("author_text_error");
+            textMessage = errorMessages.getProperty("message_text_error");
+            maxLengtMessageText = errorMessages.getProperty("max_kol_message_text_error");
         } catch (FileNotFoundException | UnsupportedEncodingException e) {
             userLogger.error("error message: " + e.getMessage());
         } catch (IOException e) {
@@ -41,7 +41,7 @@ public class MessageValidationImpl implements MessageValidation {
     public void validateAuthor(Map<String, String> error, Message mes) {
         String autorName = mes.getAuthorName();
         if (autorName.equals("")) {
-            error.put("show_author_error", authorMessage);
+            error.put("show_author_text_error", authorMessage);
         }
 
     }
@@ -50,10 +50,10 @@ public class MessageValidationImpl implements MessageValidation {
         String messageDesc = mes.getMessageDesc();
 
         if (messageDesc.equals("")) {
-            error.put("show_messagetext_error", textMessage);
+            error.put("show_message_text_error", textMessage);
         }
         if (messageDesc != null && messageDesc.length() > 4000) {
-            error.put("show_max_kol_messagetext_error", maxLengtMessageText);
+            error.put("show_max_kol_message_text_error", maxLengtMessageText);
 
         }
     }

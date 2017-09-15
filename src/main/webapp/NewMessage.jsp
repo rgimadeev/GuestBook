@@ -18,15 +18,15 @@
         <tr>
             <td>Автор:</td>
             <td><input type="text" size="25" name="authorName" value="${authorNameText}"/></td>
-            <td class="error_text"><p>${errorText.show_author_error}</p>
+            <td class="error_text"><p>${errorText.show_author_text_error}</p>
             </td>
         </tr>
         <tr>
             <td>Текст сообщения:</td>
             <td><textarea name="messageDesc" style="width: 450px" rows="10" placeholder="${messageText}"></textarea>
             </td>
-            <td class="error_text"><p>${errorText.show_messagetext_error}</p>
-                <p>${errorText.show_max_kol_messagetext_error}</p>
+            <td class="error_text"><p>${errorText.show_message_text_error}</p>
+                <p>${errorText.show_max_kol_message_text_error}</p>
             </td>
         </tr>
     </table>
