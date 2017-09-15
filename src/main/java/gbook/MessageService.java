@@ -1,25 +1,8 @@
 package gbook;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.List;
 
-public class MessageService {
-    private MessageValidation validator=new MessageValidation();
-    private DbConnect dbConnect=new DbConnect();
-    public SaveResult saveMessage(Message mes) {
-        HashMap<String, String> errors = validator.validate(mes);
-        if (errors == null) {
-            dbConnect.insertMessage(mes);
-            return new SaveResult();
-        } else {
-            SaveResult saveResult = new SaveResult();
-             saveResult.setErrors(errors);
-             return saveResult;
-        }
-    }
-    public ArrayList<Message> selectMessage() {
-        return   dbConnect.getMessages();
-
-    }
-
+public interface MessageService {
+    public SaveResult saveMessage(Message mes);
+    public List<Message> selectMessage();
 }

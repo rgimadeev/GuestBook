@@ -4,16 +4,16 @@ package gbook;
 import java.sql.Timestamp;
 
 public class Message {
-    private String autorName;
+    private String authorName;
     private String messageDesc;
     private Timestamp publicationDate;
 
-    public String getAutorName() {
-        return autorName;
+    public String getAuthorName() {
+        return authorName;
     }
 
-    public void setAutorName(String autorName) {
-        this.autorName = autorName;
+    public void setAuthorName(String authorName) {
+        this.authorName = authorName;
     }
 
     public String getMessageDesc() {
