@@ -31,7 +31,7 @@
     <p class="message_text">
     <td>${mes.getMessageDesc()}</td>
     </p>
-    <p class="pub_date">
+    <p class="publication_date">
     <td>Дата публикации: <fmt:formatDate pattern="dd.MM.YYYY HH:mm" value="${mes.getPublicationDate()}"/></td>
     <br>
     <td><a href="#top">Наверх</a></td>

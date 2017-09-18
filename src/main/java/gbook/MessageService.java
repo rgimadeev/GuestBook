@@ -2,8 +2,8 @@ package gbook;
 
 import java.util.List;
 
-public interface MessageService {
-    public SaveResult saveMessage(Message mes);
+interface MessageService {
+    SaveResult saveMessage(Message mes);
 
-    public List<Message> selectMessage();
+    List<Message> selectMessage();
 }

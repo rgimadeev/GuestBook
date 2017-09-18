@@ -41,7 +41,7 @@ public class MessageValidationImpl implements MessageValidation {
     public void validateAuthor(Map<String, String> error, Message mes) {
         String autorName = mes.getAuthorName();
         if (autorName.equals("")) {
-            error.put("show_author_text_error", authorMessage);
+            error.put("author_text_error", authorMessage);
         }
 
     }
@@ -50,10 +50,10 @@ public class MessageValidationImpl implements MessageValidation {
         String messageDesc = mes.getMessageDesc();
 
         if (messageDesc.equals("")) {
-            error.put("show_message_text_error", textMessage);
+            error.put("message_text_error", textMessage);
         }
         if (messageDesc != null && messageDesc.length() > 4000) {
-            error.put("show_max_kol_message_text_error", maxLengtMessageText);
+            error.put("max_kol_message_text_error", maxLengtMessageText);
 
         }
     }

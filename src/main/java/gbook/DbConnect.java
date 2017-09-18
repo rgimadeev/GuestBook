@@ -3,10 +3,10 @@ package gbook;
 import java.sql.Connection;
 import java.util.List;
 
-public interface DbConnect {
-    public Connection getDbConnection();
+interface DbConnect {
+    Connection getDbConnection();
 
-    public List<Message> getMessages();
+    List<Message> getMessages();
 
-    public void insertMessage(Message message);
+    void insertMessage(Message message);
 }
