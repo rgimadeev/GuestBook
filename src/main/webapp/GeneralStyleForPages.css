@@ -1,0 +1,87 @@
+.body {
+    color: black;
+    background: silver url(images/bg.jpg);
+    font-family: Calligraph, Regular;
+    font-size: x-large;
+}
+
+.h {
+    color: #0000FF;
+    font-family: Calligraph, Regular;
+    font-size: x-large;
+    text-align: center;
+}
+
+.p {
+    color: #00ff00;
+    font-family: Calligraph, Regular;
+    font-size: x-large;
+}
+
+.author {
+    color: black;
+    font-family: Calligraph, sans-serif;
+    font-size: large;
+
+}
+
+.publication_date {
+    color: black;
+    font-family: Calligraph, sans-serif;
+    font-size: large;
+    text-align: right;
+}
+
+.error_text {
+    color: red;
+    font-family: Cambria, sans-serif;
+    font-size: medium;
+
+}
+
+.message_text {
+    color: black;
+    font-family: Cambria, sans-serif;
+    font-size: large;
+    text-align: left;
+}
+
+.save_button {
+    width: 90px;
+    height: 30px;
+    border-radius: 30px;
+    background: #459DE5;
+    color: #fff;
+    position: fixed;
+    left: 350px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.save_button:hover {
+    background: #358DE5;
+}
+
+.save_button:focus {
+    outline: none;
+}
+
+.clear_button {
+    width: 90px;
+    height: 30px;
+    border-radius: 30px;
+    background: #459DE5;
+    color: #fff;
+    position: fixed;
+    left: 450px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.clear_button:hover {
+    background: #358DE5;
+}
+
+.clear_button:focus {
+    outline: none;
+}

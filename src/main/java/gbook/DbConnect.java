@@ -1,80 +1,12 @@
 package gbook;
 
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.sql.DataSource;
-import java.sql.*;
-import java.text.ParseException;
-import java.util.*;
+import java.sql.Connection;
+import java.util.List;
 
+interface DbConnect {
+    Connection getConnection();
 
+    List<Message> getMessages();
 
-public class DbConnect {
-
-    public Connection getConnection ()  {
-        InitialContext ctx = null;
-        DataSource ds = null;
-        try {
-            ctx = new InitialContext();
-            ds = (DataSource) ctx.lookup("java:comp/env/jdbc/GuestBookDS");
-        } catch (NamingException e) {
-            System.out.println(e.getMessage());;
-        }
-        Connection conn = null;
-        try {
-            conn = ds.getConnection();
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-        return conn;
-
-    }
-    public ArrayList<Message> getMessages()  {
-
-        Message mes = null;
-        ArrayList<Message> messages = new ArrayList<Message>();
-        try(Connection dbConnection=getConnection();
-            Statement statement = dbConnection.createStatement()) {
-            ResultSet resultset;
-            String sql = "SELECT autor_name, text_message, publication_date FROM message_table order by publication_date desc";
-            resultset = statement.executeQuery(sql);
-            while (resultset.next()) {
-                mes = new Message();
-                mes.setAutorName(resultset.getString("autor_name"));
-                mes.setMessageDesc(resultset.getString("text_message"));
-                mes.setPublicationDate(resultset.getTimestamp("publication_date"));
-                messages.add(mes);
-                System.out.println(mes.getAutorName() + " "
-                        + mes.getMessageDesc() + " " + mes.getPublicationDate());
-            }
-        } catch (SQLException sql) {
-            System.out.println("Error Sql: "+sql.getMessage());
-        }
-            return messages;
-
-        }
-
-    public void insertMessage(Message message)  {
-        try(Connection dbConnection=getConnection();
-            PreparedStatement stmt=dbConnection.prepareStatement("INSERT INTO message_table"
-                    + "(autor_name, text_message,publication_date)"
-                    + "VALUES( ?,  ?, ?)");) {
-            stmt.setString(1, message.getAutorName());
-            stmt.setString(2, message.getMessageDesc());
-            stmt.setTimestamp(3,new java.sql.Timestamp (getCurrentDate().getTime()));
-            stmt.executeUpdate();
-        } catch (SQLException e) {
-            System.out.println("Error Sql: "+e.getMessage());
-        }
-    }
-
-    public  java.sql.Timestamp getCurrentDate(){
-
-        java.util.Date today = new java.util.Date();
-        return new java.sql.Timestamp(today.getTime());
-
-    }
+    void insertMessage(Message message);
 }
-
-
-

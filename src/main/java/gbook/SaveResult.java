@@ -1,16 +1,16 @@
 package gbook;
 
 
-import java.util.HashMap;
+import java.util.Map;
 
 public class SaveResult {
-    HashMap<String,String> hashMap;
+    Map<String, String> errors;
 
-    public HashMap<String, String> getHashMap() {
-        return hashMap;
+    public Map<String, String> getErrors() {
+        return errors;
     }
 
-    public void setHashMap(HashMap<String, String> hashMap) {
-        this.hashMap = hashMap;
+    public void setErrors(Map<String, String> errors) {
+        this.errors = errors;
     }
 }
