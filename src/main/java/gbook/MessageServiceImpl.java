@@ -26,6 +26,4 @@ public class MessageServiceImpl implements MessageService {
         return dbConnect.getMessages();
 
     }
-
-
 }
