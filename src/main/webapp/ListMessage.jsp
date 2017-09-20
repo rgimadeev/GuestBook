@@ -22,16 +22,16 @@
 
 <a href="new-message">Добавление нового сообщения</a><br>
 
-<c:forEach var="mes" items="${messageList}">
+<c:forEach var="message" items="${messageList}">
     <p class="author">
-    <td>Автор: ${mes.getAuthorName()}</td>
+    <td>Автор: ${message.getAuthorName()}</td>
     <br>
     </p>
     <p class="message_text">
-    <td>${mes.getMessageText()}</td>
+    <td>${message.getMessageText()}</td>
     </p>
     <p class="publication_date">
-    <td>Дата публикации: <fmt:formatDate pattern="dd.MM.YYYY HH:mm" value="${mes.getPublicationDate()}"/></td>
+    <td>Дата публикации: <fmt:formatDate pattern="dd.MM.YYYY HH:mm" value="${message.getPublicationDate()}"/></td>
     <br>
     <td><a href="#top">Наверх</a></td>
     <br>
