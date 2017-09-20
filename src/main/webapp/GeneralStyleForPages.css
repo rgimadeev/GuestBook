@@ -1,11 +1,5 @@
-.list_background {
+.body {
     background: silver url(images/bg.jpg);
-    font-family: Calligraph, Regular;
-    font-size: x-large;
-}
-
-.form_background {
-    background: silver url(images/bg2.jpg);
     font-family: Calligraph, Regular;
     font-size: x-large;
 }

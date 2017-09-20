@@ -7,5 +7,5 @@ interface MessageValidation {
 
     void validateAuthor(Map<String, String> error, Message mes);
 
-    void validateMessageDesc(Map<String, String> error, Message mes);
+    void validateMessageText(Map<String, String> error, Message mes);
 }

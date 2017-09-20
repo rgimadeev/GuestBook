@@ -24,7 +24,7 @@ public class DbConnectImpl implements DbConnect {
             return ds.getConnection();
 
         } catch (NamingException | SQLException ex) {
-            userLogger.error("error message: " + ex.getMessage());
+            userLogger.error("error in class DbConnectImpl method getDbConnection(NamingException,SQLException): " + ex.getMessage());
             throw new DbConnectException(ex.getMessage());
         }
 
@@ -42,14 +42,14 @@ public class DbConnectImpl implements DbConnect {
             while (resultset.next()) {
                 mes = new Message();
                 mes.setAuthorName(resultset.getString("author_name"));
-                mes.setMessageDesc(resultset.getString("text_message"));
+                mes.setMessageText(resultset.getString("text_message"));
                 mes.setPublicationDate(resultset.getTimestamp("publication_date"));
                 messages.add(mes);
                 System.out.println(mes.getAuthorName() + " "
-                        + mes.getMessageDesc() + " " + mes.getPublicationDate());
+                        + mes.getMessageText() + " " + mes.getPublicationDate());
             }
         } catch (SQLException e) {
-            userLogger.error("error sql: " + e.getMessage());
+            userLogger.error("error in class DbConnectImpl method getMessages (SQLException): " + e.getMessage());
             throw new DbConnectException(e.getMessage());
         }
         return messages;
@@ -63,11 +63,11 @@ public class DbConnectImpl implements DbConnect {
                      + "VALUES( ?,  ?, ?)");
         ) {
             stmt.setString(1, message.getAuthorName());
-            stmt.setString(2, message.getMessageDesc());
+            stmt.setString(2, message.getMessageText());
             stmt.setTimestamp(3, new Timestamp(System.currentTimeMillis()));
             stmt.executeUpdate();
         } catch (SQLException e) {
-            userLogger.error("error sql: " + e.getMessage());
+            userLogger.error("error in class DbConnectImpl method insertMessages (SQLException) " + e.getMessage());
             throw new DbConnectException(e.getMessage());
         }
     }

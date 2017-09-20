@@ -10,7 +10,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link rel="stylesheet" type="text/css" href="GeneralStyleForPages.css">
 </head>
-<body class="form_background">
+<body class="body">
 <h><p class="h">Добавление нового сообщения:</p></h>
 <br>
 <form action="new-message" method="POST">
@@ -23,7 +23,7 @@
         </tr>
         <tr>
             <td>Текст сообщения:</td>
-            <td><textarea name="messageDesc" style="width: 450px" rows="10" placeholder="${messageText}"></textarea>
+            <td><textarea name="messageText" style="width: 450px" rows="10" placeholder="${messageText}"></textarea>
             </td>
             <td class="error_text"><p>${errorText.message_text_error}</p>
                 <p>${errorText.max_kol_message_text_error}</p>

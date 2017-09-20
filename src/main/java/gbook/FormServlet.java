@@ -25,7 +25,7 @@ public class FormServlet extends HttpServlet {
             resp.sendRedirect("/messages?sendMes=1");
         } else {
             req.setAttribute("authorNameText", mes.getAuthorName());//чтоб текст в поле "Автор" оставался при нажатие на "сохранить"
-            req.setAttribute("messageText", mes.getMessageDesc());//чтоб текст в поле "Текст сообщения" оставался при нажатие на "сохранить"
+            req.setAttribute("messageText", mes.getMessageText());//чтоб текст в поле "Текст сообщения" оставался при нажатие на "сохранить"
             req.setAttribute("errorText", s.getErrors());
             req.getRequestDispatcher("/NewMessage.jsp").forward(req, resp);
         }
@@ -34,7 +34,7 @@ public class FormServlet extends HttpServlet {
     private Message createMessage(HttpServletRequest req) {
         Message s = new Message();
         s.setAuthorName(req.getParameter("authorName"));
-        s.setMessageDesc(req.getParameter("messageDesc"));
+        s.setMessageText(req.getParameter("messageText"));
         return s;
     }
 
