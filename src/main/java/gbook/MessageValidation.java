@@ -9,5 +9,4 @@ interface MessageValidation {
 
     void validateMessageText(Map<String, String> errors, Message message);
 
-    void validateAuthorAndMessageText(Map<String, String> errors, Message message);
 }

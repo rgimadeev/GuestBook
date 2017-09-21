@@ -39,7 +39,6 @@ public class MessageValidationImpl implements MessageValidation {
         Map<String, String> errors = new HashMap<String, String>();
         validateAuthor(errors, message);
         validateMessageText(errors, message);
-        validateAuthorAndMessageText(errors, message);
         return errors;
 
     }
@@ -48,34 +47,20 @@ public class MessageValidationImpl implements MessageValidation {
         String authorName = message.getAuthorName();
         if (authorName.equals("")) {
             errors.put("author_text_error", author_text);
-            errors.put("message_text_error", "");
-            errors.put("max_kol_message_text_error", "");
+
         }
     }
 
     public void validateMessageText(Map<String, String> errors, Message message) {
         String messageText = message.getMessageText();
         if (messageText.equals("")) {
-            errors.put("author_text_error", "");
             errors.put("message_text_error", message_text);
 
         }
         if (messageText != null && messageText.length() > 4000) {
-            errors.put("author_text_error", "");
-            errors.put("message_text_error", "");
             errors.put("max_kol_message_text_error", max_kol_message_text);
         }
 
     }
 
-    public void validateAuthorAndMessageText(Map<String, String> errors, Message message) {
-        String messageText = message.getMessageText();
-        String authorName = message.getAuthorName();
-        if (authorName.equals("") && messageText.equals("")) {
-            errors.put("author_text_error", author_text);
-            errors.put("message_text_error", message_text);
-
-        }
-
-    }
 }
