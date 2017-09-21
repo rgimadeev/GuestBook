@@ -43,24 +43,25 @@ public class MessageValidationImpl implements MessageValidation {
 
     }
 
-    public void validateAuthor(Map<String, String> errors, Message message) {
+    public void validateAuthor(Map<String, String> error, Message message) {
         String authorName = message.getAuthorName();
         if (authorName.equals("")) {
-            errors.put("author_text_error", author_text);
+            error.put("author_text_error", author_text);
 
         }
     }
 
-    public void validateMessageText(Map<String, String> errors, Message message) {
+    public void validateMessageText(Map<String, String> error, Message message) {
         String messageText = message.getMessageText();
         if (messageText.equals("")) {
-            errors.put("message_text_error", message_text);
+            error.put("message_text_error", message_text);
 
         }
-        if (messageText != null && messageText.length() > 4000) {
-            errors.put("max_kol_message_text_error", max_kol_message_text);
+        if (messageText != null && messageText.length() > 40) {
+            error.put("max_kol_message_text_error", max_kol_message_text);
         }
 
     }
 
 }
+
