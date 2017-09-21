@@ -14,9 +14,8 @@ $(document).ready(function () {
                     window.location.href = "/messages?sendMes=1";
                 }
                 else if (data.errors) {
-                    document.getElementById("author_text_error").innerHTML = "" ;
-                    document.getElementById("message_text_error").innerHTML = "";
-                    document.getElementById("max_kol_message_text_error").innerHTML = "";
+                    var element = document.getElementsByClassName("ERRORS");
+                    for (var i = 0; i <= element.length - 1; i++) element[i].innerHTML = "";
                     for (var key in data.errors) {
                         $("#" + key).text(data.errors[key]);
                     }

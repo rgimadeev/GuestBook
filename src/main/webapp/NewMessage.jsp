@@ -23,15 +23,15 @@
             <td>Автор:</td>
             <td><input type="text" size="25" id="authorName" name="authorName"/></td>
             <td class="error_text">
-                <div id="author_text_error"></div>
+                <div id="author_text_error" class="errors"></div>
             </td>
         </tr>
         <tr>
             <td>Текст сообщения:</td>
             <td><textarea name="messageText" id="messageText" style="width: 450px" rows="10"></textarea></td>
             <td class="error_text">
-                <div id="message_text_error"></div>
-                <div id="max_kol_message_text_error"></div>
+                <div id="message_text_error" class="errors"></div>
+                <div id="max_kol_message_text_error" class="errors"></div>
             </td>
 
         </tr>
