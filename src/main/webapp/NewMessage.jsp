@@ -39,7 +39,7 @@
     <br>
     <a href="messages">Переход к списку сообщений</a>
     <input class="save_button" id="submitButtonSave" type="submit" value="Сохранить">
-    <input class="clear_button" id="submitButton2" type="reset" value="Очистить">
+    <input class="clear_button" id="submitButtonClear" type="reset" value="Очистить">
 </form>
 </body>
 </html>
