@@ -31,20 +31,21 @@ public class FormServlet extends HttpServlet {
         SaveResult result = messageService.saveMessage(message);
         String s = null;
         resp.setContentType("application/json;charset=utf-8");
+        Gson gson = new GsonBuilder().create();
+
         try (PrintWriter out = resp.getWriter()) {
             req.setCharacterEncoding("UTF-8");
-            Gson gson = new GsonBuilder().create();
+
             if (result.getErrors() == null)
 
             {
                 s = "{\"success\": true}";
 
             } else {
-                Map<String, Object> responseMap = new HashMap<>();
+                Map<String, Object> responseMap = new HashMap<String, Object>();
                 responseMap.put("success", false);
                 responseMap.put("errors", result.getErrors());
-                String json = gson.toJson(responseMap);
-                s = json.toString();
+                s = gson.toJson(responseMap);
 
             }
             out.println(s);
