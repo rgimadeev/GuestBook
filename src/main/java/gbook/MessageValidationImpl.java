@@ -57,7 +57,7 @@ public class MessageValidationImpl implements MessageValidation {
             error.put("message_text_error", message_text);
 
         }
-        if (messageText != null && messageText.length() > 40) {
+        if (messageText != null && messageText.length() > 4000) {
             error.put("max_kol_message_text_error", max_kol_message_text);
         }
 
