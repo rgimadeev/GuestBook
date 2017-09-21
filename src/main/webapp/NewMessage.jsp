@@ -11,7 +11,7 @@
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js" type="text/javascript"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
-    <script src="checkMessage.js" type="text/javascript"></script>
+    <script src="CheckMessage.js" type="text/javascript"></script>
     <link rel="stylesheet" type="text/css" href="GeneralStyleForPages.css">
 </head>
 <body class="body">
@@ -39,7 +39,7 @@
     <br>
     <a href="messages">Переход к списку сообщений</a>
     <input class="save_button" id="submitButtonSave" type="submit" value="Сохранить">
-    <input class="clear_button" id="submitButtonClear" type="reset" value="Очистить">
+    <input class="clear_button" id="submitButton2" type="reset" value="Очистить">
 </form>
 </body>
 </html>
