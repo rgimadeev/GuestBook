@@ -23,23 +23,23 @@
             <td>Автор:</td>
             <td><input type="text" size="25" id="authorName" name="authorName"/></td>
             <td class="error_text">
-                <div id="author_text_error" class="errors"></div>
+                <div id="author_text_error" class="errors_js"></div>
             </td>
         </tr>
         <tr>
             <td>Текст сообщения:</td>
             <td><textarea name="messageText" id="messageText" style="width: 450px" rows="10"></textarea></td>
             <td class="error_text">
-                <div id="message_text_error" class="errors"></div>
-                <div id="max_kol_message_text_error" class="errors"></div>
+                <div id="message_text_error" class="errors_js"></div>
+                <div id="max_kol_message_text_error" class="errors_js"></div>
             </td>
 
         </tr>
     </table>
     <br>
     <a href="messages">Переход к списку сообщений</a>
-    <input class="save_button" id="submitButton" type="submit" value="Сохранить">
-    <input class="clear_button" type="reset" value="Очистить">
+    <input class="save_button" id="submitButtonSave" type="submit" value="Сохранить">
+    <input class="clear_button" id="submitButtonClear" type="reset" value="Очистить">
 </form>
 </body>
 </html>

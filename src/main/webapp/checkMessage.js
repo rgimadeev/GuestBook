@@ -2,7 +2,7 @@ $(document).ready(function () {
     $("#MessageForm").submit(function (e) {
         e.preventDefault();
     });
-    $("#submitButton").click(function (e) {
+    $("#submitButtonSave").click(function (e) {
         var data = $(MessageForm).serialize();
         $.ajax({
             type: "POST",
@@ -14,7 +14,7 @@ $(document).ready(function () {
                     window.location.href = "/messages?sendMes=1";
                 }
                 else if (data.errors) {
-                    var element = document.getElementsByClassName("ERRORS");
+                    var element = document.getElementsByClassName("errors_js");
                     for (var i = 0; i <= element.length - 1; i++) element[i].innerHTML = "";
                     for (var key in data.errors) {
                         $("#" + key).text(data.errors[key]);
@@ -26,6 +26,10 @@ $(document).ready(function () {
             }
         });
         return false;
+    });
+    $("#submitButtonClear").click(function (e) {
+        var element = document.getElementsByClassName("errors_js");
+        for (var i = 0; i <= element.length - 1; i++) element[i].innerHTML = "";
     });
 
 });
