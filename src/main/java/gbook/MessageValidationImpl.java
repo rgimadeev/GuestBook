@@ -39,8 +39,8 @@ public class MessageValidationImpl implements MessageValidation {
     }
 
     public void validateAuthor(Map<String, String> error, Message mes) {
-        String autorName = mes.getAuthorName();
-        if (autorName.equals("")) {
+        String authorName = mes.getAuthorName();
+        if (authorName.equals("")) {
             error.put("author_text_error", authorMessage);
         }
 
