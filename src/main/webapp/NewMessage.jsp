@@ -33,7 +33,6 @@
                 <div id="message_text_error" class="errors_js"></div>
                 <div id="max_kol_message_text_error" class="errors_js"></div>
             </td>
-
         </tr>
     </table>
     <br>
