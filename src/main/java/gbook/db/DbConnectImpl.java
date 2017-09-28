@@ -1,5 +1,6 @@
-package gbook;
+package gbook.db;
 
+import gbook.model.Message;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

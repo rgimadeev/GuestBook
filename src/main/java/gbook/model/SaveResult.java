@@ -1,4 +1,4 @@
-package gbook;
+package gbook.model;
 
 import java.util.Map;
 

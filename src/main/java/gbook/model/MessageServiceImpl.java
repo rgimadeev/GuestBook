@@ -1,4 +1,8 @@
-package gbook;
+package gbook.model;
+
+import gbook.model.MessageValidation;
+import gbook.db.DbConnect;
+import gbook.db.DbConnectImpl;
 
 import java.util.List;
 import java.util.Map;

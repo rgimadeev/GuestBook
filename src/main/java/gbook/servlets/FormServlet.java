@@ -1,4 +1,9 @@
-package gbook;
+package gbook.servlets;
+
+import gbook.model.Message;
+import gbook.model.MessageService;
+import gbook.model.MessageServiceImpl;
+import gbook.model.SaveResult;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,7 +18,7 @@ public class FormServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        req.getRequestDispatcher("/NewMessage.jsp").forward(req, resp);
+        req.getRequestDispatcher("/pages/NewMessage.jsp").forward(req, resp);
     }
 
     public void doPost(HttpServletRequest req, HttpServletResponse resp)
@@ -27,7 +32,7 @@ public class FormServlet extends HttpServlet {
             req.setAttribute("authorNameText", mes.getAuthorName());//чтоб текст в поле "Автор" оставался при нажатие на "сохранить"
             req.setAttribute("messageText", mes.getMessageText());//чтоб текст в поле "Текст сообщения" оставался при нажатие на "сохранить"
             req.setAttribute("errorText", s.getErrors());
-            req.getRequestDispatcher("/NewMessage.jsp").forward(req, resp);
+            req.getRequestDispatcher("/pages/NewMessage.jsp").forward(req, resp);
         }
     }
 

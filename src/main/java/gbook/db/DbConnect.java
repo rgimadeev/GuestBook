@@ -1,9 +1,11 @@
-package gbook;
+package gbook.db;
+
+import gbook.model.Message;
 
 import java.sql.Connection;
 import java.util.List;
 
-interface DbConnect {
+public interface DbConnect {
     Connection getDbConnection();
 
     List<Message> getMessages();

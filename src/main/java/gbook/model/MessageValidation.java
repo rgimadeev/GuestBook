@@ -1,8 +1,10 @@
-package gbook;
+package gbook.model;
+
+import gbook.model.Message;
 
 import java.util.Map;
 
-interface MessageValidation {
+public interface MessageValidation {
     Map<String, String> validate(Message mes);
 
     void validateAuthor(Map<String, String> error, Message mes);
