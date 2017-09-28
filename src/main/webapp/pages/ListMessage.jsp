@@ -9,7 +9,7 @@
     <title>Гостевая книга</title>
     <meta charset="utf-8"/>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-    <link rel="stylesheet" type="text/css" href="../css/GeneralStyleForPages.css">
+    <link rel="stylesheet" type="text/css" href="/pages/css/GeneralStyleForPages.css">
 </head>
 
 <body class="body">
