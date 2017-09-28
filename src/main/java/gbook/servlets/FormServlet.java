@@ -1,7 +1,11 @@
-package gbook;
+package gbook.servlets;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import gbook.model.Message;
+import gbook.model.MessageService;
+import gbook.model.MessageServiceImpl;
+import gbook.model.SaveResult;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -22,7 +26,7 @@ public class FormServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        req.getRequestDispatcher("/NewMessage.jsp").forward(req, resp);
+        req.getRequestDispatcher("/pages/NewMessage.jsp").forward(req, resp);
 
     }
 

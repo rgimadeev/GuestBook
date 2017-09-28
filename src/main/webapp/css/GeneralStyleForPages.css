@@ -1,6 +1,6 @@
 .body {
     color: black;
-    background: silver url(images/bg.jpg);
+    background: silver url(../images/bg.jpg);
     font-family: Calligraph, Regular;
     font-size: x-large;
 }

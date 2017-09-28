@@ -1,5 +1,9 @@
-package gbook;
+package gbook.servlets;
 
+
+import gbook.model.Message;
+import gbook.model.MessageService;
+import gbook.model.MessageServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,7 +21,7 @@ public class ListServlet extends HttpServlet {
         MessageService messageService = new MessageServiceImpl();
         List<Message> list = messageService.selectMessage();
         request.setAttribute("messageList", list);
-        request.getRequestDispatcher("/ListMessage.jsp").forward(request, response);
+        request.getRequestDispatcher("/pages/ListMessage.jsp").forward(request, response);
     }
 
 }

@@ -1,8 +1,8 @@
-package gbook;
+package gbook.model;
 
 import java.util.List;
 
-interface MessageService {
+public interface MessageService {
 
     SaveResult saveMessage(Message message);
 

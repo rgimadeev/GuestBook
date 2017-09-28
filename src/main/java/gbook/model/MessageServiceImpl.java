@@ -1,5 +1,8 @@
-package gbook;
+package gbook.model;
 
+
+import gbook.db.DbConnect;
+import gbook.db.DbConnectImpl;
 
 import java.util.List;
 import java.util.Map;

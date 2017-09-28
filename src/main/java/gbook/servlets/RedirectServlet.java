@@ -1,4 +1,4 @@
-package gbook;
+package gbook.servlets;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
