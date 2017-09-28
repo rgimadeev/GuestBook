@@ -11,8 +11,8 @@
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js" type="text/javascript"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
-    <script src="../javascript/CheckMessage.js" type="text/javascript"></script>
-    <link rel="stylesheet" type="text/css" href="../css/GeneralStyleForPages.css">
+    <script src="/pages/javascript/CheckMessage.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="/pages/css/GeneralStyleForPages.css">
 </head>
 <body class="body">
 <h class="h"><p>Добавление нового сообщения:</p></h>
