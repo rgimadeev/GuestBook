@@ -11,7 +11,7 @@ import java.util.Properties;
 public class MessageValidationImpl implements MessageValidation {
     String authorMessage;
     String textMessage;
-    String maxLengtMessageText;
+    String maxKolMessageText;
     static final Logger userLogger = LogManager.getLogger(MessageValidationImpl.class);
 
     public MessageValidationImpl() {
@@ -23,7 +23,7 @@ public class MessageValidationImpl implements MessageValidation {
             errorMessages.load(reader);
             authorMessage = errorMessages.getProperty("author_text_error");
             textMessage = errorMessages.getProperty("message_text_error");
-            maxLengtMessageText = errorMessages.getProperty("max_kol_message_text_error");
+            maxKolMessageText = errorMessages.getProperty("max_kol_message_text_error");
         } catch (FileNotFoundException | UnsupportedEncodingException e) {
             userLogger.error("error in class MessageValidationImpl (FileNotFoundException,UnsupportedEncodingException) : " + e.getMessage());
         } catch (IOException e) {
@@ -53,7 +53,7 @@ public class MessageValidationImpl implements MessageValidation {
             error.put("message_text_error", textMessage);
         }
         if (messageText != null && messageText.length() > 4000) {
-            error.put("max_kol_message_text_error", maxLengtMessageText);
+            error.put("max_kol_message_text_error", maxKolMessageText);
 
         }
     }
